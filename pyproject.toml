@@ -12,8 +12,10 @@ requires-python = ">=3.10"
 dependencies = [
     "openai>=2.8.0",
     "pydantic>=2.12.4",
+    "tqdm>=4.66.0",
 ]
 license = { file = "LICENSE" }
+
 keywords = ["reclaim", "claim decomposition", "nlp", "natural language processing", "openai", "gpt"]
 classifiers = [
     "Programming Language :: Python :: 3",
@@ -22,6 +24,13 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "License :: OSI Approved :: MIT License",
     "Operating System :: OS Independent",
+]
+
+
+[project.optional-dependencies]
+llm = [
+    "transformers>=4.40.0",
+    "torch>=2.1.0",
 ]
 
 [project.scripts]
@@ -36,5 +45,5 @@ Repository = "https://github.com/stat-ml/reclaim.git"
 requires = ["uv_build>=0.8.20,<0.9.0"]
 build-backend = "uv_build"
 
-[tool.uv]
-package = { name = "reclaim", version = "0.1.0" }
+#[tool.uv]
+#package = { name = "reclaim", version = "0.1.0" }
