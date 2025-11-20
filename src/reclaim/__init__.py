@@ -14,9 +14,9 @@ except metadata.PackageNotFoundError:  # pragma: no cover - resolved at runtime
 
 __all__ = [
     "__version__",
-    "main",
     "extract_claims",
     "extract_and_align_claims",
+    "batch_extract_and_align_claims",
     "doc2sentences",
     "Claim",
 ]
@@ -40,19 +40,16 @@ def extract_claims(text: str, model: str = "gpt-4o") -> List[Claim]:
 
 
 def extract_and_align_claims(
-    model_output,
+    text,
+    tokens,
     tokenizer,
     openai_model: str = "gpt-4o",
-    progress_bar: bool = False,
+    progress_bar: bool = True,
     n_threads: int = 1,
 ):
     """
     Extract and align claims with token-level provenance from model output tokens.
     """
-    tokens = model_output[0]
-    if hasattr(tokens, "tolist"):
-        tokens = tokens.tolist()
-    text = tokenizer.decode(tokens, skip_special_tokens=True)
     extractor = ClaimsExtractor(
         openai_chat=OpenAIChat(openai_model=openai_model),
         progress_bar=progress_bar,
@@ -61,6 +58,21 @@ def extract_and_align_claims(
     return extractor.claims_from_text(text, tokens, tokenizer)
 
 
-def main() -> None:
-    """Default console entry point for basic smoke checks."""
-    print("ReClaim is ready to reclaim your time.")
+def batch_extract_and_align_claims(
+    texts: List[str],
+    tokens: List[List[int]],
+    tokenizer,
+    openai_model: str = "gpt-4o",
+    progress_bar: bool = True,
+    n_threads: int = 1,
+) -> List[List[Claim]]:
+    """
+    Batch extract and align claims with token-level provenance from model output tokens.
+    """
+    extractor = ClaimsExtractor(
+        openai_chat=OpenAIChat(openai_model=openai_model),
+        progress_bar=progress_bar,
+        n_threads=n_threads,
+    )
+
+    return extractor.batch_claims_from_texts(texts, tokens, tokenizer)

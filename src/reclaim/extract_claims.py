@@ -67,58 +67,29 @@ class ClaimsExtractor(StatCalculator):
         self.matching_prompts = matching_prompts
         self.n_threads = n_threads
 
-    @staticmethod
-    def meta_info() -> Tuple[List[str], List[str]]:
-        return (
-            [
-                "claims",
-                "claim_texts_concatenated",
-                "claim_input_texts_concatenated",
-            ],
-            [
-                "greedy_texts",
-                "greedy_tokens",
-            ],
-        )
-
-    def __call__(
+    def batch_claims_from_texts(
         self,
-        dependencies: Dict[str, object],
         texts: List[str],
-        model,
-        *args,
-        **kwargs,
+        tokens: List[List[int]],
+        tokenizer,
     ) -> Dict[str, List]:
-        greedy_texts = dependencies["greedy_texts"]
-        greedy_tokens = dependencies["greedy_tokens"]
-        claim_texts_concatenated: List[str] = []
-        claim_input_texts_concatenated: List[str] = []
 
         with ThreadPoolExecutor(max_workers=self.n_threads) as executor:
             claims = list(
                 tqdm(
                     executor.map(
                         self.claims_from_text,
-                        greedy_texts,
-                        greedy_tokens,
-                        [model.tokenizer] * len(greedy_texts),
+                        texts,
+                        tokens,
+                        [tokenizer] * len(texts),
                     ),
-                    total=len(greedy_texts),
+                    total=len(texts),
                     desc="Extracting claims",
                     disable=not self.progress_bar,
                 )
             )
 
-        for c in claims:
-            for claim in c:
-                claim_texts_concatenated.append(claim.claim_text)
-                claim_input_texts_concatenated.append(texts[0])
-
-        return {
-            "claims": claims,
-            "claim_texts_concatenated": claim_texts_concatenated,
-            "claim_input_texts_concatenated": claim_input_texts_concatenated,
-        }
+        return claims
 
     def claims_from_text(self, text: str, tokens: List[int], tokenizer) -> List[Claim]:
         start_time = time.time()

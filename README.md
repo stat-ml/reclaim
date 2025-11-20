@@ -58,7 +58,7 @@ model_out = model.generate(tokenizer(input_text, return_tensors="pt")["input_ids
 model_tokens = model_out[0]
 model_text = tokenizer.decode(model_tokens, skip_special_tokens=True)
 
-claims = extract_and_align_claims(model_out, tokenizer)
+claims = extract_and_align_claims(model_text, model_tokens, tokenizer)
 ```
 
 ## Local development
