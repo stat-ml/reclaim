@@ -1,0 +1,40 @@
+[project]
+name = "reclaim"
+version = "0.1.0"
+description = "ReClaim is a lightweight Python toolkit for building reclaim automations."
+readme = "README.md"
+authors = [
+    {   name = "Ekaterina Fadeeva", email = "rediska0123@gmail.com" },
+    {   name = "Roman Vashurin", email = "rvashurin@gmail.com" },
+    {   name = "Alex Rubashevskii", email = "sasha.rubashevskii@gmail.com" },
+]
+requires-python = ">=3.10"
+dependencies = [
+    "openai>=2.8.0",
+    "pydantic>=2.12.4",
+]
+license = { file = "LICENSE" }
+keywords = ["reclaim", "automation", "sdk"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+
+[project.scripts]
+reclaim = "reclaim:main"
+
+[project.urls]
+Homepage = "https://github.com/stat-ml/reclaim"
+Documentation = "https://github.com/stat-ml/reclaim/tree/main/docs"
+Repository = "https://github.com/stat-ml/reclaim.git"
+
+[build-system]
+requires = ["uv_build>=0.8.20,<0.9.0"]
+build-backend = "uv_build"
+
+[tool.uv]
+package = { name = "reclaim", version = "0.1.0" }
