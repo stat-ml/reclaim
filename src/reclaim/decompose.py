@@ -19,6 +19,20 @@ def doc2sentences(
     num_retries: int = 5,
     schema: Optional[BaseModel] = None,
 ) -> List[str]:
+    """
+    Decompose a document into sentences or claims using an OpenAI prompt.
+
+    Args:
+        doc: Source document to split.
+        mode: Extraction strategy; controls which prompt is used.
+        model: OpenAI model name.
+        system_role: System prompt passed to the chat model.
+        num_retries: Number of attempts if the request fails.
+        schema: Optional Pydantic schema to parse structured responses.
+
+    Returns:
+        Parsed result from the LLM, often a list of strings or a Pydantic model.
+    """
     if mode == "sentences":
         prompt = DOC_TO_SENTENCES_PROMPT
     elif mode == "independent_sentences":

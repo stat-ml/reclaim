@@ -18,11 +18,13 @@ log = logging.getLogger("lm_polygraph")
 
 
 def replace_quotes(text: str) -> str:
+    """Normalize single-quoted spans to double quotes for matching stability."""
     return re.sub(r"(?<!\w)'(.*?)'(?!\w)", r'"\1"', text)
 
 
 @dataclass
 class Claim:
+    """Structured claim with optional token-level alignment information."""
     claim_text: str
     decoded_claim: str
     sentence: str
@@ -30,19 +32,23 @@ class Claim:
 
 
 class ClaimModel(BaseModel):
+    """Pydantic model describing a list of extracted claims."""
     claims: List[str]
 
 
 class ClaimSentence(BaseModel):
+    """Sentence with related words used for alignment."""
     sentence: str
     related_words: List[str]
 
 
 class ClaimSentences(BaseModel):
+    """Wrapper for a list of `ClaimSentence` objects."""
     sentences: List[ClaimSentence]
 
 
 class ClaimLabels(BaseModel):
+    """Faithfulness and factuality labels with a free-form explanation."""
     faithful: bool
     factual: bool
     explanation: str
@@ -63,6 +69,18 @@ class ClaimsExtractor(StatCalculator):
         matching_prompts: Dict[str, str] = MATCHING_PROMPTS,
         n_threads: int = 1,
     ):
+        """
+        Initialize the extractor with prompt templates and chat backend.
+
+        Args:
+            openai_chat: Chat client used for LLM calls.
+            sent_separators: Characters treated as sentence boundaries.
+            language: Language code used to pick prompts.
+            progress_bar: Whether to display tqdm progress bars.
+            extraction_prompts: Templates used for claim extraction.
+            matching_prompts: Templates used for aligning claims to text spans.
+            n_threads: Maximum worker threads for batch operations.
+        """
         super().__init__()
         log.info(f"Initializing ClaimsExtractor with language={language}")
         self.language = language
@@ -79,6 +97,17 @@ class ClaimsExtractor(StatCalculator):
         tokens: List[List[int]],
         tokenizer,
     ) -> Dict[str, List]:
+        """
+        Extract and align claims for multiple texts concurrently.
+
+        Args:
+            texts: Raw generated texts to analyze.
+            tokens: Token id sequences corresponding to each text.
+            tokenizer: Tokenizer matching the token ids.
+
+        Returns:
+            List of aligned claims per input text, preserving order.
+        """
 
         with ThreadPoolExecutor(max_workers=self.n_threads) as executor:
             claims = list(
@@ -98,12 +127,24 @@ class ClaimsExtractor(StatCalculator):
         return claims
 
     def claims_from_text(self, text: str, tokens: List[int], tokenizer) -> List[Claim]:
+        """
+        Extract claims from a single text and align them to token ids.
+
+        Args:
+            text: Model-generated text to analyze.
+            tokens: Token ids that produced the text.
+            tokenizer: Tokenizer used to decode token ids.
+
+        Returns:
+            List of `Claim` objects with token-level provenance.
+        """
         start_time = time.time()
         stupid_claims = [
             "Mary is a five-year old girl.",
             "Mary likes playing piano.",
             "Mary doesn't like cookies.",
         ]
+        # Guardrail cleanup: drop known garbage claims sometimes returned by the prompt.
 
         sent_list = []
         match_str_list = []
@@ -200,6 +241,17 @@ class ClaimsExtractor(StatCalculator):
         sent_tokens: List[int],
         tokenizer,
     ) -> List[Claim]:
+        """
+        Extract claims from a sentence and align them within that sentence.
+
+        Args:
+            sent: Sentence to process.
+            sent_tokens: Token ids covering the sentence span.
+            tokenizer: Tokenizer that produced the token ids.
+
+        Returns:
+            Claims aligned to spans inside the provided sentence.
+        """
         extracted_claims = self.openai_chat.ask(
             self.extraction_prompts[self.language].format(sent=sent)
         )
@@ -240,11 +292,22 @@ class ClaimsExtractor(StatCalculator):
         return claims
 
     def _match_string(self, sent: str, match_words: List[str]) -> Optional[str]:
+        """
+        Build a mask string marking where each match word appears in the sentence.
+
+        Args:
+            sent: Lowercased sentence text.
+            match_words: Ordered words expected to appear in the sentence.
+
+        Returns:
+            Mask string with carets over matched characters, or raises if unmatched.
+        """
         sent_pos = 0
         match_words_pos = 0
         match_str = ""
         while sent_pos < len(sent):
             check_boundaries = False
+            # Only consider matches when current position is at a word boundary.
             if sent_pos == 0 or not sent[sent_pos - 1].isalpha():
                 check_boundaries = True
             if check_boundaries and match_words_pos < len(match_words):
@@ -269,6 +332,16 @@ class ClaimsExtractor(StatCalculator):
         return match_str
 
     def _match_string_zh(self, sent: str, match_words: List[str]) -> Optional[str]:
+        """
+        Build a mask string for Chinese text where match words are contiguous spans.
+
+        Args:
+            sent: Sentence text.
+            match_words: Ordered list of character spans to match.
+
+        Returns:
+            Mask string with carets on matched characters, or None if not all found.
+        """
         last = 0
         last_match = 0
         match_str = ""
@@ -295,6 +368,18 @@ class ClaimsExtractor(StatCalculator):
         sent_tokens: List[int],
         tokenizer,
     ) -> List[int]:
+        """
+        Convert a character-level match mask into aligned token indices.
+
+        Args:
+            sent: Sentence text corresponding to the tokens.
+            match_str: Mask with carets marking matched characters.
+            sent_tokens: Token ids for the sentence.
+            tokenizer: Tokenizer used to decode token ids.
+
+        Returns:
+            Token indices within `sent_tokens` that overlap matched characters.
+        """
         sent_pos = 0
         cur_token_i = 0
         aligned_token_ids = []
@@ -304,6 +389,8 @@ class ClaimsExtractor(StatCalculator):
                 cur_token_i += 1
                 continue
             if sent[sent_pos:].startswith(cur_token_text):
+                # If any part of the decoded token overlaps a matched character,
+                # consider the token aligned to the claim.
                 if any(
                     t == "^"
                     for t in match_str[sent_pos : sent_pos + len(cur_token_text)]
@@ -316,6 +403,17 @@ class ClaimsExtractor(StatCalculator):
         return aligned_token_ids
 
     def match_claim(self, text: str, claim: str, max_parsed_words: int):
+        """
+        Find the best matching sentence for a claim and construct a match mask.
+
+        Args:
+            text: Full generated text.
+            claim: Claim string to align.
+            max_parsed_words: Maximum allowed matched words to avoid noisy matches.
+
+        Returns:
+            Tuple of (mask over full text, best matching sentence).
+        """
         prompt = MATCHING_PROMPT
         q = prompt.format(text=text, claim=claim)
         res = self.openai_chat.ask(q, schema=ClaimSentences)
@@ -333,6 +431,7 @@ class ClaimsExtractor(StatCalculator):
             if sent not in text[text_pos:]:
                 sent = replace_quotes(sent)
             assert sent in text[text_pos:]
+            # Advance through the text to avoid matching earlier duplicate substrings.
             text_pos += text[text_pos:].find(sent)
             if "No related words" in words:
                 continue
@@ -355,6 +454,7 @@ class ClaimsExtractor(StatCalculator):
             print("parsed_words:", parsed_words)
             print("-----------------")
 
+            # Keep the sentence with the richest match as the best candidate.
             if len(parsed_words) > curr_len_pars:
                 curr_len_pars = len(parsed_words)
                 best_sent = sent

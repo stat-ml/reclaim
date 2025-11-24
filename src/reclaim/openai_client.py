@@ -16,6 +16,18 @@ def gpt_single_try(
     system_role: str = "You are a helpful assistant.",
     schema: Optional[BaseModel] = None,
 ):
+    """
+    Send a single chat or responses.parse request to OpenAI.
+
+    Args:
+        user_input: User message passed to the model.
+        model: Model name to invoke.
+        system_role: System prompt to prepend.
+        schema: Optional Pydantic schema for structured output.
+
+    Returns:
+        Raw string content or parsed schema instance from the model.
+    """
     if schema is not None:
         response = OpenAI().responses.parse(
             model=model,
@@ -50,6 +62,20 @@ def gpt(
     waiting_time: int = 1,
     schema: Optional[BaseModel] = None,
 ):
+    """
+    Call `gpt_single_try` with basic retry logic on OpenAI errors.
+
+    Args:
+        user_input: User message passed to the model.
+        model: Model name to invoke.
+        system_role: System prompt to prepend.
+        num_retries: Maximum attempts before giving up.
+        waiting_time: Seconds to sleep between retries.
+        schema: Optional Pydantic schema for structured output.
+
+    Returns:
+        Model response content or parsed schema output.
+    """
     r = ""
     for _ in range(num_retries):
         try:
@@ -75,6 +101,17 @@ class OpenAIChat:
         max_tokens: Optional[int] = None,
         rewrite_cache: bool = False,
     ):
+        """
+        Configure an OpenAI chat client for repeated requests.
+
+        Args:
+            openai_model: Model name used for chat completions.
+            base_url: Optional API base URL override.
+            cache_path: Directory for potential cache files.
+            timeout: Request timeout in seconds.
+            max_tokens: Optional max completion tokens.
+            rewrite_cache: Whether to rewrite cache entries when present.
+        """
         api_key = os.environ.get("OPENAI_API_KEY", None)
         if api_key is not None:
             openai.api_key = api_key
@@ -88,6 +125,16 @@ class OpenAIChat:
         self.rewrite_cache = rewrite_cache
 
     def ask(self, message: str, schema: Optional[BaseModel] = None):
+        """
+        Send a prompt to OpenAI and return the model reply.
+
+        Args:
+            message: User content to send.
+            schema: Optional schema for structured parsing.
+
+        Returns:
+            Model response text or parsed schema instance.
+        """
         if openai.api_key is None:
             raise Exception(
                 "Cant ask openAI without token. "
@@ -102,6 +149,7 @@ class OpenAIChat:
             reply = chat.output[0].content[0].parsed
         else:
             reply = chat.choices[0].message.content
+            # Ignore boilerplate refusals that would pollute downstream parsing.
             if "please provide" in reply.lower():
                 return ""
             if "to assist you" in reply.lower():
@@ -111,7 +159,18 @@ class OpenAIChat:
         return reply
 
     def _send_request(self, messages, schema: Optional[BaseModel] = None):
+        """
+        Dispatch a chat or responses.parse request with progressive backoff.
+
+        Args:
+            messages: List of role/content dictionaries for the API.
+            schema: Optional schema to enable responses.parse.
+
+        Returns:
+            OpenAI response object.
+        """
         sleep_time_values = (5, 10, 30, 60, 120)
+        # Simple progressive backoff; escalate exception after exhausting attempts.
         for i in range(len(sleep_time_values)):
             try:
                 if schema is None:
