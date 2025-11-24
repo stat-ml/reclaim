@@ -4,87 +4,9 @@ import time
 from typing import Optional
 
 import openai
-from openai import OpenAI
 from pydantic import BaseModel
 
 log = logging.getLogger(__name__)
-
-
-def gpt_single_try(
-    user_input: str,
-    model: str = "gpt-4o",
-    system_role: str = "You are a helpful assistant.",
-    schema: Optional[BaseModel] = None,
-):
-    """
-    Send a single chat or responses.parse request to OpenAI.
-
-    Args:
-        user_input: User message passed to the model.
-        model: Model name to invoke.
-        system_role: System prompt to prepend.
-        schema: Optional Pydantic schema for structured output.
-
-    Returns:
-        Raw string content or parsed schema instance from the model.
-    """
-    if schema is not None:
-        response = OpenAI().responses.parse(
-            model=model,
-            input=[
-                {"role": "system", "content": system_role},
-                {"role": "user", "content": user_input},
-            ],
-            text_format=schema,
-        )
-
-        return response.output[0].content[0].parsed
-
-    response = OpenAI().chat.completions.create(
-        model=model,
-        messages=[
-            {"role": "system", "content": system_role},
-            {"role": "user", "content": user_input},
-        ],
-    )
-
-    result = ""
-    for choice in response.choices:
-        result += choice.message.content
-    return result
-
-
-def gpt(
-    user_input: str,
-    model: str = "gpt-4o",
-    system_role: str = "You are a helpful assistant.",
-    num_retries: int = 3,
-    waiting_time: int = 1,
-    schema: Optional[BaseModel] = None,
-):
-    """
-    Call `gpt_single_try` with basic retry logic on OpenAI errors.
-
-    Args:
-        user_input: User message passed to the model.
-        model: Model name to invoke.
-        system_role: System prompt to prepend.
-        num_retries: Maximum attempts before giving up.
-        waiting_time: Seconds to sleep between retries.
-        schema: Optional Pydantic schema for structured output.
-
-    Returns:
-        Model response content or parsed schema output.
-    """
-    r = ""
-    for _ in range(num_retries):
-        try:
-            r = gpt_single_try(user_input, model, system_role, schema)
-            break
-        except openai.OpenAIError as exception:
-            log.info("%s. Retrying...", exception)
-            time.sleep(waiting_time)
-    return r
 
 
 class OpenAIChat:
@@ -124,13 +46,19 @@ class OpenAIChat:
         self.max_tokens = max_tokens
         self.rewrite_cache = rewrite_cache
 
-    def ask(self, message: str, schema: Optional[BaseModel] = None):
+    def ask(
+        self,
+        message: str,
+        schema: Optional[BaseModel] = None,
+        system_role: str = "You are an intelligent assistant.",
+    ):
         """
         Send a prompt to OpenAI and return the model reply.
 
         Args:
             message: User content to send.
             schema: Optional schema for structured parsing.
+            system_role: System prompt to prepend to the conversation.
 
         Returns:
             Model response text or parsed schema instance.
@@ -141,7 +69,7 @@ class OpenAIChat:
                 "Please specify OPENAI_API_KEY in environment parameters."
             )
         messages = [
-            {"role": "system", "content": "You are an intelligent assistant."},
+            {"role": "system", "content": system_role},
             {"role": "user", "content": message},
         ]
         chat = self._send_request(messages, schema)

@@ -2,7 +2,7 @@ from typing import List, Optional
 
 from pydantic import BaseModel
 
-from .openai_client import gpt
+from .openai_client import OpenAIChat
 from .prompts import (
     DOC_TO_ATOMIC_CLAIMS_PROMPT,
     DOC_TO_INDEPEDENT_SENTENCES_PROMPT,
@@ -44,11 +44,11 @@ def doc2sentences(
     else:
         raise ValueError(f"Unsupported mode: {mode}")
 
-    results = None
     user_input = prompt.format(doc=doc).strip()
-    for _ in range(num_retries):
-        try:
-            results = gpt(user_input, model=model, system_role=system_role, schema=schema)
-        except Exception as e:
-            print(f"An unexpected error occurred: {e}.")
+    chat = OpenAIChat(openai_model=model)
+    results = chat.ask(
+        message=user_input,
+        schema=schema,
+        system_role=system_role,
+    )
     return results

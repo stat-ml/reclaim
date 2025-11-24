@@ -114,14 +114,6 @@ OpenAI Client Utilities
 
 .. module:: reclaim.openai_client
 
-.. py:function:: gpt_single_try(user_input: str, model: str = "gpt-4o", system_role: str = "You are a helpful assistant.", schema: Optional[BaseModel] = None)
-
-   Send a single chat completion or ``responses.parse`` call. Returns raw string content or a parsed schema instance.
-
-.. py:function:: gpt(user_input: str, model: str = "gpt-4o", system_role: str = "You are a helpful assistant.", num_retries: int = 3, waiting_time: int = 1, schema: Optional[BaseModel] = None)
-
-   Convenience wrapper that retries ``gpt_single_try`` on ``openai`` errors with a short sleep between attempts.
-
 .. py:class:: OpenAIChat(openai_model: str = "gpt-4o", base_url: Optional[str] = None, cache_path: str = "~/.cache", timeout: int = 600, max_tokens: Optional[int] = None, rewrite_cache: bool = False)
 
    Lightweight chat client used across extraction and annotation.
@@ -132,7 +124,7 @@ OpenAI Client Utilities
 
    .. py:method:: ask(message: str, schema: Optional[BaseModel] = None)
 
-      Send a prompt to OpenAI with a fixed system role. If ``schema`` is provided, uses ``responses.parse``; otherwise returns the string content while filtering common boilerplate refusals.
+      Send a prompt to OpenAI with a configurable system role. If ``schema`` is provided, uses ``responses.parse``; otherwise returns the string content while filtering common boilerplate refusals.
 
    .. py:method:: _send_request(messages, schema: Optional[BaseModel] = None)
 

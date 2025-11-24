@@ -12,7 +12,6 @@ from .claim_level_prompts import CLAIM_EXTRACTION_PROMPTS, MATCHING_PROMPTS
 from .decompose import doc2sentences
 from .openai_client import OpenAIChat
 from .prompts import MATCHING_PROMPT
-from .stat_calculator import StatCalculator
 
 log = logging.getLogger("lm_polygraph")
 
