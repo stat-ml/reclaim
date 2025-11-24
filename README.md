@@ -1,4 +1,4 @@
-# ReClaim
+# ReClaim [![Docs](https://img.shields.io/badge/docs-readthedocs-blue)](https://pyclaim.readthedocs.io/en/latest/index.html)
 
 ReClaim is a Python library for decomposing complex texts into atomic claims, enabling structured analysis and verification of information. A claim is a minimal unit of information that can be independently evaluated for truthfulness.
 
@@ -107,4 +107,6 @@ uv run pytest         # run your tests (add them under tests/)
 ```
 
 ## Documentation
+Hosted docs: https://pyclaim.readthedocs.io/en/latest/index.html
+
 The `docs/` directory contains high-level notes and can be extended with your preferred documentation generator. Start with [`docs/index.md`](docs/index.md) and grow the content alongside the ReClaim feature set.
