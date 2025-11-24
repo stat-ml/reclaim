@@ -19,6 +19,9 @@ pip install reclaim
 ```
 
 ## Usage
+
+### Claim extraction
+
 For simple claim extraction from text, use the `extract_claims` function:
 
 ```python
@@ -59,6 +62,41 @@ model_tokens = model_out[0]
 model_text = tokenizer.decode(model_tokens, skip_special_tokens=True)
 
 claims = extract_and_align_claims(model_text, model_tokens, tokenizer)
+```
+
+### Claim annotation
+
+ReClaim can annotate claims with respect to some context. Each claim can be evaluated on faithfulness and factuality:
+
+```python
+from reclaim import annotate_claims
+
+context = """
+Albert Einstein was a theoretical physicist born in Germany in 1879. He developed the theory of relativity and won the Nobel Prize in Physics in 1921.
+"""
+
+claims = [
+    "Albert Einstein was born in Germany in 1879.",
+    "He developed the theory of relativity.",
+    "He won the Nobel Prize in Physics in 1921.",
+    "He was a famous painter.",
+    "Albert Einstein supported development of nuclear weapons."
+]
+
+annotations = annotate_claims(claims, [context] * len(claims))
+
+for claim, annotation in zip(claims, annotations):
+    print(f"Claim: {claim} | Faithful: {annotation[0]} | Factual: {annotation[1]}")
+```
+
+Output:
+
+```
+Claim: Albert Einstein was born in Germany in 1879. | Faithful: True | Factual: True
+Claim: He developed the theory of relativity. | Faithful: True | Factual: True
+Claim: He won the Nobel Prize in Physics in 1921. | Faithful: True | Factual: True
+Claim: He was a famous painter. | Faithful: False | Factual: False
+Claim: Albert Einstein supported development of nuclear weapons. | Faithful: False | Factual: True
 ```
 
 ## Local development
