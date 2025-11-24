@@ -22,6 +22,13 @@ def doc2sentences(
     """
     Decompose a document into sentences or claims using an OpenAI prompt.
 
+    The function is a thin wrapper around :class:`OpenAIChat` that:
+    - Chooses a prompt template based on ``mode``.
+    - Formats the document into the prompt.
+    - Invokes the chat model (optionally with a schema) to obtain structured
+      text slices or claims. Parsing is delegated to Pydantic when a schema
+      is provided, otherwise raw strings are returned.
+
     Args:
         doc: Source document to split.
         mode: Extraction strategy; controls which prompt is used.
@@ -44,6 +51,7 @@ def doc2sentences(
     else:
         raise ValueError(f"Unsupported mode: {mode}")
 
+    # Render the selected prompt with the source document.
     user_input = prompt.format(doc=doc).strip()
     chat = OpenAIChat(openai_model=model)
     results = chat.ask(

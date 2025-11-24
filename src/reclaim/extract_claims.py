@@ -23,7 +23,14 @@ def replace_quotes(text: str) -> str:
 
 @dataclass
 class Claim:
-    """Structured claim with optional token-level alignment information."""
+    """
+    Structured claim with optional token-level alignment information.
+
+    - claim_text: normalized claim text returned by the LLM.
+    - decoded_claim: text reconstructed from the aligned tokens; useful for debugging tokenizer drift.
+    - sentence: source sentence used for alignment.
+    - aligned_token_ids: indices into the model output tokens that support the claim.
+    """
     claim_text: str
     decoded_claim: str
     sentence: str
@@ -48,7 +55,16 @@ class ClaimSentences(BaseModel):
 
 class ClaimsExtractor:
     """
-    Extracts claims from the text of the model generation.
+    Extract claims from model-generated text and align them back to token spans.
+
+    The extractor drives a two-stage LLM workflow:
+    1) Claim discovery: ask the model to enumerate claims in the text.
+    2) Claim-to-text alignment: for each claim, ask the model for supporting words,
+       convert them to character masks, and map those characters to token indices.
+
+    Alignment is character-driven: we build a caret mask marking matched characters,
+    then walk decoded tokens to flag any token that overlaps a caret. This approach
+    is tokenizer-agnostic and resilient to subword boundaries.
     """
 
     def __init__(
@@ -120,6 +136,13 @@ class ClaimsExtractor:
         """
         Extract claims from a single text and align them to token ids.
 
+        Workflow overview:
+        - Ask the LLM to enumerate claims from ``text``.
+        - For each claim, ask the LLM for related words within the text and build
+          a character-level mask of those words.
+        - Convert character masks to token indices so callers can attribute claims
+          to spans in the generated output.
+
         Args:
             text: Model-generated text to analyze.
             tokens: Token ids that produced the text.
@@ -157,6 +180,8 @@ class ClaimsExtractor:
 
         for claim in claim_list:
             match_str = None
+            # The matching prompt can be flaky; retry a handful of times to
+            # coax usable word lists and spans from the LLM.
             for _ in range(N_TRIES):
                 try:
                     match_str, sent = self.match_claim(text, claim, MAX_MATCHED_WORDS)
@@ -181,11 +206,14 @@ class ClaimsExtractor:
             sent_start_token_idx, sent_end_token_idx = 0, 0
             sent_start_idx, sent_end_idx = 0, 0
 
+            # Identify the exact character span of the sentence in the full text.
             while not text[sent_start_idx:].startswith(s):
                 sent_start_idx += 1
             while not text[:sent_end_idx].endswith(s):
                 sent_end_idx += 1
 
+            # Walk decoded prefixes until we cover the sentence boundaries; this
+            # yields the token window corresponding to the sentence.
             while len(tokenizer.decode(tokens[:sent_start_token_idx])) < sent_start_idx:
                 sent_start_token_idx += 1
             while len(tokenizer.decode(tokens[:sent_end_token_idx])) < sent_end_idx:
@@ -201,6 +229,7 @@ class ClaimsExtractor:
                     ]
                     aligned_token_ids = self._align(s, match_string, sent_tokens, tokenizer)
                     if len(aligned_token_ids) == 0:
+                        # If alignment fails, skip rather than emitting partial provenance.
                         continue
 
                     for i in range(len(aligned_token_ids)):
@@ -252,6 +281,7 @@ class ClaimsExtractor:
             if "there aren't any claims" in claim_text.lower():
                 continue
             claim_text = claim_text[2:].strip()
+            # Ask the model to surface specific words in the sentence that back the claim.
             chat_ask = self.matching_prompts[self.language].format(
                 sent=sent,
                 claim=claim_text,
@@ -325,6 +355,10 @@ class ClaimsExtractor:
         """
         Build a mask string for Chinese text where match words are contiguous spans.
 
+        The matching strategy is simpler than the English path: it expects each
+        item in ``match_words`` to be a contiguous sequence of characters and
+        walks the sentence linearly to mark those spans with carets.
+
         Args:
             sent: Sentence text.
             match_words: Ordered list of character spans to match.
@@ -369,6 +403,10 @@ class ClaimsExtractor:
 
         Returns:
             Token indices within `sent_tokens` that overlap matched characters.
+
+        The decoder reads token-by-token, advancing the character pointer by the
+        decoded token length whenever a prefix matches. When a token includes any
+        caret in the mask, it is considered part of the claim's provenance.
         """
         sent_pos = 0
         cur_token_i = 0
