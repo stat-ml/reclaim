@@ -5,6 +5,7 @@ from typing import List
 
 from .decompose import doc2sentences
 from .extract_claims import Claim, ClaimModel, ClaimsExtractor
+from .annotate_claims import ClaimsAnnotator
 from .openai_client import OpenAIChat
 
 try:
@@ -76,3 +77,22 @@ def batch_extract_and_align_claims(
     )
 
     return extractor.batch_claims_from_texts(texts, tokens, tokenizer)
+
+
+def annotate_claims(
+    claims: List[str],
+    contexts: List[str],
+    openai_model: str = "gpt-4o",
+    progress_bar: bool = True,
+    n_threads: int = 1,
+):
+    """
+    Annotate claims with labels.
+    """
+    annotator = ClaimsAnnotator(
+        openai_model=openai_model,
+        progress_bar=progress_bar,
+        n_threads=n_threads,
+    )
+
+    return annotator.annotate_claims(claims, contexts)

@@ -121,7 +121,7 @@ class OpenAIChat:
                         model=self.openai_model,
                         messages=messages,
                         temperature=0,
-                        max_tokens=self.max_tokens,
+                        max_completion_tokens=self.max_tokens,
                     )
                 else:
                     result = openai.OpenAI(
@@ -135,7 +135,7 @@ class OpenAIChat:
                 return result
             except Exception as e:
                 sleep_time = sleep_time_values[i]
-                log.info(
+                print(
                     "Request to OpenAI failed with exception: %s. Retry #%s/5 after %s seconds.",
                     e,
                     i,

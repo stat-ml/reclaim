@@ -42,6 +42,12 @@ class ClaimSentences(BaseModel):
     sentences: List[ClaimSentence]
 
 
+class ClaimLabels(BaseModel):
+    faithful: bool
+    factual: bool
+    explanation: str
+
+
 class ClaimsExtractor(StatCalculator):
     """
     Extracts claims from the text of the model generation.
