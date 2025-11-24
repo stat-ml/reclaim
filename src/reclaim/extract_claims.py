@@ -47,14 +47,7 @@ class ClaimSentences(BaseModel):
     sentences: List[ClaimSentence]
 
 
-class ClaimLabels(BaseModel):
-    """Faithfulness and factuality labels with a free-form explanation."""
-    faithful: bool
-    factual: bool
-    explanation: str
-
-
-class ClaimsExtractor(StatCalculator):
+class ClaimsExtractor:
     """
     Extracts claims from the text of the model generation.
     """
@@ -81,8 +74,6 @@ class ClaimsExtractor(StatCalculator):
             matching_prompts: Templates used for aligning claims to text spans.
             n_threads: Maximum worker threads for batch operations.
         """
-        super().__init__()
-        log.info(f"Initializing ClaimsExtractor with language={language}")
         self.language = language
         self.openai_chat = openai_chat
         self.sent_separators = sent_separators
@@ -449,7 +440,7 @@ class ClaimsExtractor(StatCalculator):
 
             print("-----------------")
             print("claim:", claim)
-            print("ms:", ms)
+            print("ms:  ", ms)
             print("sent:", sent)
             print("parsed_words:", parsed_words)
             print("-----------------")

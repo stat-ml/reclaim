@@ -45,10 +45,6 @@ Data Models
 
    Wrapper Pydantic model with ``sentences: List[ClaimSentence]``.
 
-.. py:class:: ClaimLabels
-
-   Pydantic model holding ``faithful``, ``factual``, and ``explanation`` attributes for annotation results.
-
 Extraction and Alignment
 ------------------------
 
@@ -141,12 +137,3 @@ OpenAI Client Utilities
    .. py:method:: _send_request(messages, schema: Optional[BaseModel] = None)
 
       Internal request dispatcher with progressive backoff across several wait intervals.
-
-Stat Calculator
----------------
-
-.. module:: reclaim.stat_calculator
-
-.. py:class:: StatCalculator
-
-   Minimal placeholder included for compatibility with upstream projects. Implements ``meta_info`` to return empty metadata and no-op initialization.
