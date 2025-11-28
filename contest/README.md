@@ -40,6 +40,4 @@ Extraction enriches each object with a list of claims. Each claim has the follow
 
 Your goal is to modify the library code to improve the quality of extracted claims.
 
-Submission should be a pull request to this repository with your changes to the code. The pull request should include a brief description of the changes you made and why you believe they improve claim extraction.
-
-Don't change the extraction script itself, only the library code used by the script. Ensure your code produces the same output format as described above.
+Submission should be a pull request to this repository with your changes to the code. The pull request should include a brief description of the changes you made and why you believe they improve claim extraction. Ensure your code produces the same output format as described above.
