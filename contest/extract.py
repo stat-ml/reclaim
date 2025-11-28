@@ -1,30 +1,23 @@
 import json
 from transformers import AutoTokenizer
+from dataclasses import asdict
 
 from reclaim import extract_and_align_claims
 
 tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3.1-70B-Instruct")
 
-results = []
-with open "inputs.json", "r") as f:
-    reader = json.load(f)
-    for row in reader:
-        result = {}
-
+with open("Meta-Llama-3.1-70B-Instruct-Turbo.json", "r") as f:
+    data = json.load(f)
+    for _id, row in data.items():
         claims = extract_and_align_claims(
-            text=row["text"],
-            tokens=row["tokens"],
+            text=row["output"],
+            tokens=row["greedy_tokens"],
             tokenizer=tokenizer,
             openai_model="gpt-5.1",
             progress_bar=True,
             n_threads=1,
         )
-
-        result['text'] = row['text']
-        result['tokens'] = row['tokens']
-        result['claims'] = [claim.to_dict() for claim in claims]
-
-        results.append(result)
+        row.update({"claims": [asdict(claim) for claim in claims]}) 
 
 with open("outputs.json", "w") as f:
-    json.dump(results, f, indent=2)
+    json.dump(data, f, indent=2)
