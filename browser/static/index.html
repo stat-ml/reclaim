@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Claim Browser</title>
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Claim Browser</span>
+    </div>
+    <label class="file-control">
+      <input type="file" id="file-input" accept=".json,application/json" />
+      <span class="file-label">Load JSON file</span>
+    </label>
+    <div id="status" class="status"></div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar">
+      <div class="sidebar-header">Retrievals</div>
+      <ul id="retrieval-list" class="retrieval-list"></ul>
+    </aside>
+    <section class="content">
+      <div class="content-header">
+        <div>
+          <div class="label">Selected retrieval</div>
+          <div id="retrieval-title" class="title">No file loaded</div>
+        </div>
+        <div id="retrieval-question" class="question"></div>
+      </div>
+      <div id="retrieval-text" class="retrieval-text empty-state">
+        <div class="placeholder">
+          <p>Load <code>outputs.json</code> (or similar) to browse claims.</p>
+          <p>The browser will decode tokens with the Llama 3.1 tokenizer and highlight claim spans.</p>
+        </div>
+      </div>
+      <div class="claims-section">
+        <div class="claims-header">Claims</div>
+        <ul id="claims-list" class="claims-list"></ul>
+      </div>
+    </section>
+  </main>
+
+  <script src="/main.js" defer></script>
+</body>
+</html>
