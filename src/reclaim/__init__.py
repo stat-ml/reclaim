@@ -46,6 +46,7 @@ def _default_postprocess_config(
     return ClaimPostprocessingConfig(
         rewrite_pronouns=True,
         sanitize_with_llm=True,
+        split_non_atomic=True,
         dedupe_with_encoder=True,
         dedupe_with_cosine=True,
     )
@@ -53,7 +54,7 @@ def _default_postprocess_config(
 
 def extract_claims(
     text: str,
-    model: str = "gpt-4o",
+    model: str = "gpt-4.1",
     postprocess_config: Optional[ClaimPostprocessingConfig] = None,
     enable_default_postprocessing: bool = True,
 ) -> List[Claim]:
@@ -88,7 +89,7 @@ def extract_and_align_claims(
     text,
     tokens,
     tokenizer,
-    openai_model: str = "gpt-4o",
+    openai_model: str = "gpt-4.1",
     progress_bar: bool = True,
     n_threads: int = 1,
     postprocess_config: Optional[ClaimPostprocessingConfig] = None,
@@ -115,7 +116,7 @@ def batch_extract_and_align_claims(
     texts: List[str],
     tokens: List[List[int]],
     tokenizer,
-    openai_model: str = "gpt-4o",
+    openai_model: str = "gpt-4.1",
     progress_bar: bool = True,
     n_threads: int = 1,
     postprocess_config: Optional[ClaimPostprocessingConfig] = None,
@@ -142,7 +143,7 @@ def batch_extract_and_align_claims(
 def annotate_claims(
     claims: List[str],
     contexts: List[str],
-    openai_model: str = "gpt-4o",
+    openai_model: str = "gpt-4.1",
     progress_bar: bool = True,
     n_threads: int = 1,
 ):

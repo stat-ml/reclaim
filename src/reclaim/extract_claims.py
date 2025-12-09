@@ -13,7 +13,12 @@ from tqdm import tqdm
 from .claim_level_prompts import CLAIM_EXTRACTION_PROMPTS, MATCHING_PROMPTS
 from .decompose import doc2sentences
 from .openai_client import OpenAIChat
-from .prompts import MATCHING_PROMPT, PRONOUN_REWRITE_PROMPT, SANITIZE_CLAIM_PROMPT
+from .prompts import (
+    MATCHING_PROMPT,
+    PRONOUN_REWRITE_PROMPT,
+    SANITIZE_CLAIM_PROMPT,
+    SPLIT_NON_ATOMIC_PROMPT,
+)
 
 log = logging.getLogger("lm_polygraph")
 
@@ -49,6 +54,7 @@ class ClaimPostprocessingConfig:
 
     rewrite_pronouns: bool = False
     sanitize_with_llm: bool = False
+    split_non_atomic: bool = False
     dedupe_with_cosine: bool = False
     dedupe_with_encoder: bool = False
     encoder_model_name: str = "Qwen/Qwen3-Embedding-0.6B"
@@ -59,6 +65,7 @@ class ClaimPostprocessingConfig:
         return (
             self.rewrite_pronouns
             or self.sanitize_with_llm
+            or self.split_non_atomic
             or self.dedupe_with_cosine
             or self.dedupe_with_encoder
         )
@@ -497,7 +504,11 @@ class ClaimsExtractor:
                     continue
                 cur_claim = sanitized
 
-            processed.append(cur_claim)
+            if config.split_non_atomic:
+                split_claims = self._split_non_atomic(cur_claim, text)
+                processed.extend(split_claims)
+            else:
+                processed.append(cur_claim)
 
         if config.dedupe_with_encoder:
             processed = self._dedupe_claims_encoder(
@@ -523,6 +534,21 @@ class ClaimsExtractor:
         if upper == "DROP":
             return None
         return reply
+
+    def _split_non_atomic(self, claim: str, text: str) -> List[str]:
+        """
+        Split a claim into atomic claims using an LLM.
+        """
+        try:
+            res = self.openai_chat.ask(
+                SPLIT_NON_ATOMIC_PROMPT.format(text=text, claim=claim),
+                schema=ClaimModel,
+            )
+            claims = res.claims if isinstance(res, ClaimModel) else []
+        except Exception:
+            return [claim]
+        cleaned = [c.strip() for c in claims if c and c.strip()]
+        return cleaned if cleaned else [claim]
 
     def _dedupe_claims(self, claims: List[str], threshold: float) -> List[str]:
         """

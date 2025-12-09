@@ -89,6 +89,23 @@ Claim:
 Return only the rewritten claim, or DROP.
 """
 
+SPLIT_NON_ATOMIC_PROMPT = """
+Split the claim into atomic, decontextualized claims if it contains multiple facts.
+- Each output claim must be one fact with a single predicate.
+- Replace pronouns with explicit entities from the text so each claim stands alone.
+- If the claim is already atomic, return it as a single-element list.
+- If you cannot produce valid atomic claims, return an empty list.
+
+Return JSON exactly as: {{"claims": ["claim 1", "claim 2", "..."]}}
+No code fences or extra text.
+
+Text:
+{text}
+
+Claim:
+{claim}
+"""
+
 
 MATCHING_PROMPT = """
 Task: Analyze the given text and the claim (which was extracted from the text). For each sentence in the text:
