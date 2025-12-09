@@ -14,7 +14,7 @@ from .prompts import (
 def doc2sentences(
     doc: str,
     mode: str = "independent_sentences",
-    model: str = "gpt-4o",
+    model: str = "gpt-4.1",
     system_role: str = "You are good at decomposing and decontextualizing text.",
     num_retries: int = 5,
     schema: Optional[BaseModel] = None,

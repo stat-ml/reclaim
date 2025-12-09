@@ -1,25 +1,19 @@
 DOC_TO_ATOMIC_CLAIMS_PROMPT = """
-Your task is to extract atomic claims from a given text. Each claim must meet the following criteria:
-1. Informative: Each claim must convey factual information about the subject matter, avoiding generic or irrelevant statements (e.g., "I will provide a balanced response" or "This type of network is simple").
-2. Context-independent: Each claim must be understandable and verifiable on its own, without requiring additional context (e.g., avoid claims like "This type of network is simple" without specifying the network type).
-3. De-duplicated: Avoid repeating the same information in different wordings.
-4. Precise: Focus on clear and specific information, avoiding vague or overly broad statements.
-Define a function named decompose(input: str). The function should return only a Python list containing strings of atomic claims. Do not include any extra formatting, code blocks, or labels like "python" in your response. For example:
-If the input text is:
-"Mary is a five-year-old girl. She likes playing piano and doesn't like cookies."
-The output should be:
-["Mary is a five-year-old girl.", "Mary likes playing piano.", "Mary doesn't like cookies."]  
-Example Input:
-"Linear Bus Topology involves connecting all network nodes to a single cable. This design makes it easy to install but difficult to troubleshoot, especially in large networks."  
-Example Output:
-["Linear Bus Topology involves connecting all network nodes to a single cable.", "Linear Bus Topology is easy to install.", "Linear Bus Topology is difficult to troubleshoot.", "Linear Bus Topology is unsuitable for large networks."]  
+You extract *atomic*, self-contained claims from the given text.
 
-Important Notes:
-1. The output must be a valid Python list with no additional text, code blocks, or formatting. 
-2. The response must consist of only the list.
+Rules:
+- A claim is one fact (single predicate); do not bundle multiple facts with "and", commas, or enumerations.
+- Each claim must be decontextualized: replace pronouns (he/she/they/it/this/that/these/those/there) and vague references with the concrete entity from the text.
+- Each claim must be informative and complete (subject + predicate + object/complement when needed). Drop fragments like "He began his career" or "is considered".
+- Avoid duplicates or near-duplicates; keep the most specific phrasing.
+- If no atomic claims exist, return an empty list.
 
-Process the following text according to these rules:
-decompose("{doc}")
+Return JSON exactly in the form:
+{{"claims": ["claim 1", "claim 2", "..."]}}
+No code fences, no extra keys, no prose.
+
+Text:
+{doc}
 """
 
 
@@ -37,33 +31,19 @@ split("{doc}")
 
 
 SENTENCES_TO_CLAIMS_PROMPT = """
-Your task is to decompose the text into atomic claims.
-Claims should be a context-independent, fully atomic, representing one fact. Atomic claims are simple, indivisible facts that do not bundle multiple pieces of information together.
+Decompose the text into *atomic, decontextualized* claims.
 
-### Guidelines for Decomposition:
-1. **Atomicity**: Break down each statement into the smallest possible unit of factual information. Avoid grouping multiple facts in one claim. For example:
-   - Instead of: "Photosynthesis in plants converts sunlight, carbon dioxide, and water into glucose and oxygen."
-   - Output: ["Photosynthesis in plants converts sunlight into glucose.", "Photosynthesis in plants converts carbon dioxide into glucose.", "Photosynthesis in plants converts water into glucose.", "Photosynthesis in plants produces oxygen."]
+Requirements:
+- One fact per claim; split conjunctions/enumerations into separate claims.
+- Replace pronouns and vague references with the specific entity from the text so the claim stands alone.
+- Keep claims informative and complete (subject + predicate + complement as needed). Drop non-informative fragments.
+- Remove duplicates/near-duplicates; keep the most specific version.
 
-   - Instead of: "The heart pumps blood through the body and regulates oxygen supply to tissues."
-   - Output: ["The heart pumps blood through the body.", "The heart regulates oxygen supply to tissues."]
+Return JSON exactly in the form:
+{{"claims": ["claim 1", "claim 2", "..."]}}
+No code fences or extra text.
 
-   - Instead of: "Gravity causes objects to fall to the ground and keeps planets in orbit around the sun."
-   - Output: ["Gravity causes objects to fall to the ground.", "Gravity keeps planets in orbit around the sun."]
-
-2. **Context-Independent**: Each claim must be understandable and verifiable on its own without requiring additional context or references to other claims. Avoid vague claims like "This process is important for life."
-
-3. **Precise and Unambiguous**: Ensure the claims are specific and avoid combining related ideas that can stand independently.
-
-4. **No Formatting**: The response must be a Python list of strings without any extra formatting, code blocks, or labels like "python".
-
-### Example:
-If the input text is:
-"Mary is a five-year-old girl. She likes playing piano and doesn't like cookies."
-Extracted claims should be:
-"Mary is a five-year-old girl.", "Mary likes playing piano.", "Mary doesn't like cookies."
-
-### Now, decompose the following text into atomic claims:
+Text:
 {doc}
 """
 
@@ -78,6 +58,35 @@ You should return a python list without any other words,
 Note that your response will be passed to the python interpreter, SO NO OTHER WORDS!
 
 process("{doc}")
+"""
+
+PRONOUN_REWRITE_PROMPT = """
+Rewrite the claim so it is fully self-contained and does not rely on pronouns or vague references. Use the text to resolve the referents. If it cannot be rewritten, return DROP.
+
+Text:
+{text}
+
+Claim:
+{claim}
+
+Return only the rewritten claim, or DROP.
+"""
+
+SANITIZE_CLAIM_PROMPT = """
+You are checking a claim for quality. The claim must be:
+- one atomic fact (single predicate; no "and"/enumerations),
+- decontextualized (explicit subject, no pronouns like he/she/they/it/this/that/these/those/there),
+- informative and complete (no bare fragments like "was 13 years old" without who, where, when; no "is considered" without the thing).
+
+If the claim violates these rules, rewrite it into one valid atomic claim using the text for context. If it cannot be made valid, return DROP.
+
+Text:
+{text}
+
+Claim:
+{claim}
+
+Return only the rewritten claim, or DROP.
 """
 
 

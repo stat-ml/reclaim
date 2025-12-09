@@ -2,7 +2,13 @@ from .prompts import MATCHING_PROMPT
 
 # Lightweight prompt dictionaries keyed by language to mirror original structure.
 CLAIM_EXTRACTION_PROMPTS = {
-    "en": "List all atomic claims from the following sentence. Return each claim on a new line starting with '- '. Sentence: {sent}",
+    "en": (
+        "List all atomic, decontextualized claims from the following sentence.\n"
+        "- One fact per claim (no conjunctions/enumerations).\n"
+        "- Replace pronouns or vague references with the specific entity so the claim stands alone.\n"
+        "Return JSON exactly as {\"claims\": [\"...\"]} and nothing else.\n"
+        "Sentence: {sent}"
+    ),
 }
 
 MATCHING_PROMPTS = {
