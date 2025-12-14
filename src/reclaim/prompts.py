@@ -37,35 +37,87 @@ split("{doc}")
 
 
 SENTENCES_TO_CLAIMS_PROMPT = """
-Your task is to decompose the text into atomic claims.
-Claims should be a context-independent, fully atomic, representing one fact. Atomic claims are simple, indivisible facts that do not bundle multiple pieces of information together.
+Decompose the following text into atomic claims.
 
-### Guidelines for Decomposition:
-1. **Atomicity**: Break down each statement into the smallest possible unit of factual information. Avoid grouping multiple facts in one claim. For example:
-   - Instead of: "Photosynthesis in plants converts sunlight, carbon dioxide, and water into glucose and oxygen."
-   - Output: ["Photosynthesis in plants converts sunlight into glucose.", "Photosynthesis in plants converts carbon dioxide into glucose.", "Photosynthesis in plants converts water into glucose.", "Photosynthesis in plants produces oxygen."]
+## What is an Atomic Claim?
+An atomic claim is a single, verifiable statement of fact that:
+- Contains exactly ONE piece of information that can be true or false
+- Is self-contained (understandable without the original text)
+- Preserves the original meaning accurately
 
-   - Instead of: "The heart pumps blood through the body and regulates oxygen supply to tissues."
-   - Output: ["The heart pumps blood through the body.", "The heart regulates oxygen supply to tissues."]
+## Decomposition Rules
 
-   - Instead of: "Gravity causes objects to fall to the ground and keeps planets in orbit around the sun."
-   - Output: ["Gravity causes objects to fall to the ground.", "Gravity keeps planets in orbit around the sun."]
+### 1. Split Conjunctions
+Separate statements joined by "and", "but", "or", commas, or semicolons.
 
-2. **Context-Independent**: Each claim must be understandable and verifiable on its own without requiring additional context or references to other claims. Avoid vague claims like "This process is important for life."
+Input: "The heart pumps blood and regulates oxygen supply."
+Output: ["The heart pumps blood.", "The heart regulates oxygen supply."]
 
-3. **Precise and Unambiguous**: Ensure the claims are specific and avoid combining related ideas that can stand independently.
+### 2. Resolve Pronouns and References
+Replace pronouns (he, she, it, this, that) with their referents.
 
-4. **No Formatting**: The response must be a Python list of strings without any extra formatting, code blocks, or labels like "python".
+Input: "Marie Curie was a physicist. She won two Nobel Prizes."
+Output: ["Marie Curie was a physicist.", "Marie Curie won two Nobel Prizes."]
 
-### Example:
-If the input text is:
-"Mary is a five-year-old girl. She likes playing piano and doesn't like cookies."
-Extracted claims should be:
-"Mary is a five-year-old girl.", "Mary likes playing piano.", "Mary doesn't like cookies."
+### 3. Preserve Relationships, Don't Invent New Ones
+Keep the original semantic relationships. Don't split processes that are inherently unified.
 
-### Now, decompose the following text into atomic claims:
+Input: "Photosynthesis converts carbon dioxide and water into glucose using sunlight."
+Output: [
+    "Photosynthesis uses sunlight.",
+    "Photosynthesis uses carbon dioxide.",
+    "Photosynthesis uses water.",
+    "Photosynthesis produces glucose."
+]
+NOT: "Photosynthesis converts sunlight into glucose." (factually wrong)
+
+### 4. Handle Lists Properly
+Each item in a list becomes a separate claim with the full context.
+
+Input: "Python supports integers, floats, and strings."
+Output: [
+    "Python supports integers.",
+    "Python supports floats.",
+    "Python supports strings."
+]
+
+### 5. Keep Comparisons Intact
+Don't split comparative statements.
+
+Input: "Jupiter is larger than Earth."
+Output: ["Jupiter is larger than Earth."]
+NOT: ["Jupiter is large.", "Earth is small."] (loses the comparison)
+
+### 6. Preserve Negations Accurately
+Keep negations with the correct scope.
+
+Input: "The test did not detect any errors."
+Output: ["The test did not detect any errors."]
+NOT: ["The test detected errors."] (inverted meaning)
+
+### 7. Handle Conditionals as Single Claims
+Keep "if-then" relationships together.
+
+Input: "If the temperature exceeds 100°C, water boils."
+Output: ["Water boils if the temperature exceeds 100°C."]
+
+### 8. Skip Meta-Commentary
+Exclude statements about the text itself or the writing process.
+
+Input: "As mentioned earlier, the algorithm runs in O(n) time."
+Output: ["The algorithm runs in O(n) time."]
+(Skip "As mentioned earlier")
+
+## Output Format
+Return ONLY a valid Python list of strings. No explanations, markdown, or code blocks.
+
+Example:
+["First claim.", "Second claim.", "Third claim."]
+
+## Text to Decompose
 {doc}
 """
+
 
 
 DOC_TO_INDEPEDENT_SENTENCES_PROMPT = """
