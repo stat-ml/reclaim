@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 Run extraction:
 ```bash
-python extract_claims.py
+python extract.py
 ```
 
 Extraction enriches each object with a list of claims. Each claim has the following structure:
