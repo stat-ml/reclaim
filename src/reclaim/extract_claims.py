@@ -1,9 +1,11 @@
 import logging
+import math
 import re
 import time
+from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 from pydantic import BaseModel
 from tqdm import tqdm
@@ -11,7 +13,12 @@ from tqdm import tqdm
 from .claim_level_prompts import CLAIM_EXTRACTION_PROMPTS, MATCHING_PROMPTS
 from .decompose import doc2sentences
 from .openai_client import OpenAIChat
-from .prompts import MATCHING_PROMPT
+from .prompts import (
+    MATCHING_PROMPT,
+    PRONOUN_REWRITE_PROMPT,
+    SANITIZE_CLAIM_PROMPT,
+    SPLIT_NON_ATOMIC_PROMPT,
+)
 
 log = logging.getLogger("lm_polygraph")
 
@@ -35,6 +42,33 @@ class Claim:
     decoded_claim: str
     sentence: str
     aligned_token_ids: List[int]
+
+
+@dataclass
+class ClaimPostprocessingConfig:
+    """
+    Configuration for optional claim cleanup steps.
+
+    Each flag can be toggled independently to ease testing.
+    """
+
+    rewrite_pronouns: bool = False
+    sanitize_with_llm: bool = False
+    split_non_atomic: bool = False
+    dedupe_with_cosine: bool = False
+    dedupe_with_encoder: bool = False
+    encoder_model_name: str = "Qwen/Qwen3-Embedding-0.6B"
+    encoder_device: Optional[str] = None
+    similarity_threshold: float = 0.92
+
+    def enabled(self) -> bool:
+        return (
+            self.rewrite_pronouns
+            or self.sanitize_with_llm
+            or self.split_non_atomic
+            or self.dedupe_with_cosine
+            or self.dedupe_with_encoder
+        )
 
 
 class ClaimModel(BaseModel):
@@ -76,6 +110,7 @@ class ClaimsExtractor:
         extraction_prompts: Dict[str, str] = CLAIM_EXTRACTION_PROMPTS,
         matching_prompts: Dict[str, str] = MATCHING_PROMPTS,
         n_threads: int = 1,
+        postprocess_config: Optional[ClaimPostprocessingConfig] = None,
     ):
         """
         Initialize the extractor with prompt templates and chat backend.
@@ -88,6 +123,7 @@ class ClaimsExtractor:
             extraction_prompts: Templates used for claim extraction.
             matching_prompts: Templates used for aligning claims to text spans.
             n_threads: Maximum worker threads for batch operations.
+            postprocess_config: Optional toggles for post-processing.
         """
         self.language = language
         self.openai_chat = openai_chat
@@ -96,6 +132,8 @@ class ClaimsExtractor:
         self.extraction_prompts = extraction_prompts
         self.matching_prompts = matching_prompts
         self.n_threads = n_threads
+        self.postprocess_config = postprocess_config
+        self._encoder_cache = {}
 
     def batch_claims_from_texts(
         self,
@@ -164,6 +202,7 @@ class ClaimsExtractor:
 
         uniq_sentences: List[str] = []
         claim_list = doc2sentences(doc=text, mode="claims", schema=ClaimModel).claims
+        claim_list = self.postprocess_claims(claim_list, text)
 
         for s in stupid_claims:
             if s in claim_list:
@@ -271,16 +310,15 @@ class ClaimsExtractor:
         Returns:
             Claims aligned to spans inside the provided sentence.
         """
-        extracted_claims = self.openai_chat.ask(
-            self.extraction_prompts[self.language].format(sent=sent)
+        extracted = self.openai_chat.ask(
+            self.extraction_prompts[self.language].format(sent=sent),
+            schema=ClaimModel,
         )
+        claim_texts = extracted.claims if isinstance(extracted, ClaimModel) else []
         claims = []
-        for claim_text in extracted_claims.split("\n"):
-            if not claim_text.startswith("- "):
+        for claim_text in claim_texts:
+            if not claim_text:
                 continue
-            if "there aren't any claims" in claim_text.lower():
-                continue
-            claim_text = claim_text[2:].strip()
             # Ask the model to surface specific words in the sentence that back the claim.
             chat_ask = self.matching_prompts[self.language].format(
                 sent=sent,
@@ -429,6 +467,198 @@ class ClaimsExtractor:
             else:
                 sent_pos += 1
         return aligned_token_ids
+
+    def postprocess_claims(self, claims: List[str], text: str) -> List[str]:
+        """
+        Apply optional heuristic + LLM cleanup to extracted claims.
+
+        Steps (controlled by ClaimPostprocessingConfig):
+        - Rewrite pronoun-heavy claims using the source text for grounding.
+        - Run an LLM-based sanitization pass to enforce atomicity and completeness.
+        - Drop near-duplicates using cosine similarity on bag-of-words vectors.
+        """
+        config = self.postprocess_config
+        if config is None or not config.enabled():
+            return claims
+
+        processed: List[str] = []
+        pronoun_pattern = re.compile(
+            r"\b(it|he|she|they|them|his|her|their|this|that|these|those|there)\b",
+            re.IGNORECASE,
+        )
+
+        for claim in claims:
+            cur_claim = claim.strip()
+            if not cur_claim:
+                continue
+
+            if config.rewrite_pronouns and pronoun_pattern.search(cur_claim):
+                rewritten = self._llm_rewrite(cur_claim, text, PRONOUN_REWRITE_PROMPT)
+                if rewritten is None:
+                    continue
+                cur_claim = rewritten
+
+            if config.sanitize_with_llm:
+                sanitized = self._llm_rewrite(cur_claim, text, SANITIZE_CLAIM_PROMPT)
+                if sanitized is None:
+                    continue
+                cur_claim = sanitized
+
+            if config.split_non_atomic:
+                split_claims = self._split_non_atomic(cur_claim, text)
+                processed.extend(split_claims)
+            else:
+                processed.append(cur_claim)
+
+        if config.dedupe_with_encoder:
+            processed = self._dedupe_claims_encoder(
+                processed,
+                config.similarity_threshold,
+                model_name=config.encoder_model_name,
+                device=config.encoder_device,
+            )
+
+        if config.dedupe_with_cosine:
+            processed = self._dedupe_claims(processed, config.similarity_threshold)
+
+        return processed
+
+    def _llm_rewrite(self, claim: str, text: str, prompt: str) -> Optional[str]:
+        """
+        Ask the LLM to rewrite a claim. Returns None if the claim should be dropped.
+        """
+        reply = self.openai_chat.ask(prompt.format(text=text, claim=claim)).strip()
+        if not reply:
+            return claim
+        upper = reply.upper()
+        if upper == "DROP":
+            return None
+        return reply
+
+    def _split_non_atomic(self, claim: str, text: str) -> List[str]:
+        """
+        Split a claim into atomic claims using an LLM.
+        """
+        try:
+            res = self.openai_chat.ask(
+                SPLIT_NON_ATOMIC_PROMPT.format(text=text, claim=claim),
+                schema=ClaimModel,
+            )
+            claims = res.claims if isinstance(res, ClaimModel) else []
+        except Exception:
+            return [claim]
+        cleaned = [c.strip() for c in claims if c and c.strip()]
+        return cleaned if cleaned else [claim]
+
+    def _dedupe_claims(self, claims: List[str], threshold: float) -> List[str]:
+        """
+        Drop near-duplicate claims using cosine similarity over bag-of-words vectors.
+        """
+        kept: List[str] = []
+        for claim in claims:
+            tokens = self._tokenize(claim)
+            if len(tokens) == 0:
+                continue
+            dup = False
+            for existing in kept:
+                sim = self._cosine_similarity(tokens, self._tokenize(existing))
+                if sim >= threshold:
+                    dup = True
+                    break
+            if not dup:
+                kept.append(claim)
+        return kept
+
+    @staticmethod
+    def _tokenize(claim: str) -> Counter:
+        """Lowercase word tokenization for cosine similarity."""
+        words = re.findall(r"[\w']+", claim.lower())
+        return Counter(words)
+
+    @staticmethod
+    def _cosine_similarity(a: Counter, b: Counter) -> float:
+        """Cosine similarity between two sparse bag-of-words Counters."""
+        if not a or not b:
+            return 0.0
+        dot = sum(a[k] * b[k] for k in a.keys() & b.keys())
+        norm = math.sqrt(sum(v * v for v in a.values())) * math.sqrt(
+            sum(v * v for v in b.values())
+        )
+        if norm == 0:
+            return 0.0
+        return dot / norm
+
+    def _dedupe_claims_encoder(
+        self,
+        claims: List[str],
+        threshold: float,
+        model_name: str,
+        device: Optional[str],
+    ) -> List[str]:
+        """
+        Drop near-duplicates using a transformer encoder (e.g., LaBSE or MiniLM).
+        """
+        if len(claims) <= 1:
+            return claims
+
+        try:
+            tokenizer, model = self._load_encoder(model_name, device)
+        except Exception as exc:
+            log.warning("Falling back to cosine dedupe; failed to load encoder: %s", exc)
+            return self._dedupe_claims(claims, threshold)
+
+        import torch
+        import torch.nn.functional as F
+
+        encoded = tokenizer(
+            claims,
+            padding=True,
+            truncation=True,
+            return_tensors="pt",
+        )
+        if device:
+            encoded = {k: v.to(device) for k, v in encoded.items()}
+            model.to(device)
+
+        with torch.no_grad():
+            outputs = model(**encoded)
+            token_embeddings = outputs.last_hidden_state
+            mask = encoded["attention_mask"].unsqueeze(-1)
+            summed = (token_embeddings * mask).sum(dim=1)
+            counts = mask.sum(dim=1).clamp(min=1)
+            embeddings = summed / counts
+            embeddings = F.normalize(embeddings, p=2, dim=1)
+
+        kept: List[str] = []
+        kept_vecs = []
+        for idx, claim in enumerate(claims):
+            vec = embeddings[idx]
+            if not kept_vecs:
+                kept.append(claim)
+                kept_vecs.append(vec)
+                continue
+            sims = [float(torch.dot(vec, kv)) for kv in kept_vecs]
+            if max(sims) >= threshold:
+                continue
+            kept.append(claim)
+            kept_vecs.append(vec)
+        return kept
+
+    def _load_encoder(self, model_name: str, device: Optional[str]):
+        """
+        Lazily load and cache a HF encoder model/tokenizer.
+        """
+        if model_name in self._encoder_cache:
+            return self._encoder_cache[model_name]
+
+        from transformers import AutoModel, AutoTokenizer
+
+        tokenizer = AutoTokenizer.from_pretrained(model_name)
+        model = AutoModel.from_pretrained(model_name)
+        if device:
+            model.to(device)
+        self._encoder_cache[model_name] = (tokenizer, model)
+        return tokenizer, model
 
     def match_claim(self, text: str, claim: str, max_parsed_words: int):
         """

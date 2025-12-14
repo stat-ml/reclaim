@@ -1,4 +1,5 @@
 import json
+from tqdm import tqdm
 from transformers import AutoTokenizer
 from dataclasses import asdict
 
@@ -8,7 +9,7 @@ tokenizer = AutoTokenizer.from_pretrained("meta-llama/Meta-Llama-3.1-70B-Instruc
 
 with open("Meta-Llama-3.1-70B-Instruct-Turbo.json", "r") as f:
     data = json.load(f)
-    for _id, row in data.items():
+    for _id, row in tqdm(data.items()):
         claims = extract_and_align_claims(
             text=row["output"],
             tokens=row["greedy_tokens"],
