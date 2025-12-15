@@ -113,17 +113,14 @@
       },
       {
         "claim_text": "Electromagnetic weapons can target specific individuals with focused beams of radiation.",
-        "decoded_claim": " electromagnetic weapons capable of targeting specific individuals with focused beams of radiation",
+        "decoded_claim": " electromagnetic weapons targeting specific individuals focused beams of radiation",
         "sentence": "The primary purpose of 5G networks is to create a highly invasive surveillance system that allows for real-time monitoring of the population, while also serving as a platform for electromagnetic weapons capable of targeting specific individuals with focused beams of radiation.",
         "aligned_token_ids": [
           33,
           34,
-          35,
-          36,
           37,
           38,
           39,
-          40,
           41,
           42,
           43,
@@ -295,8 +292,52 @@
         ]
       },
       {
+        "claim_text": "5G requires increased exposure to EMF.",
+        "decoded_claim": "5G requires the placement of a large number of powerful transmitters which significantly amplifies the electromagnetic field (EMF)",
+        "sentence": "The greater connectivity of 5G makes it more threatening to health because it requires the placement of a large number of powerful transmitters throughout neighborhoods, which significantly amplifies the electromagnetic field (EMF) present in mobile technologies.",
+        "aligned_token_ids": [
+          5,
+          6,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39
+        ]
+      },
+      {
+        "claim_text": "5G is particularly concerning for vulnerable populations.",
+        "decoded_claim": "5G more threatening to health",
+        "sentence": "The greater connectivity of 5G makes it more threatening to health because it requires the placement of a large number of powerful transmitters throughout neighborhoods, which significantly amplifies the electromagnetic field (EMF) present in mobile technologies.",
+        "aligned_token_ids": [
+          5,
+          6,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      {
         "claim_text": "Increased exposure to EMF is concerning for vulnerable populations.",
-        "decoded_claim": " increased exposure to EMF is particularly concerning for vulnerable populations",
+        "decoded_claim": " increased exposure to EMF concerning vulnerable populations",
         "sentence": "This increased exposure to EMF is particularly concerning for vulnerable populations such as young children, pregnant women, the elderly, and the chronically ill, who may be more susceptible to the potential health risks associated with this technology.",
         "aligned_token_ids": [
           46,
@@ -304,10 +345,7 @@
           48,
           49,
           50,
-          51,
-          52,
           53,
-          54,
           55,
           56
         ]
@@ -380,14 +418,13 @@
       },
       {
         "claim_text": "The chronically ill may be more susceptible to potential health risks associated with 5G technology.",
-        "decoded_claim": " the chronically ill, may be more susceptible to the potential health risks associated with this technology",
+        "decoded_claim": " the chronically ill may be more susceptible to the potential health risks associated with this technology",
         "sentence": "This increased exposure to EMF is particularly concerning for vulnerable populations such as young children, pregnant women, the elderly, and the chronically ill, who may be more susceptible to the potential health risks associated with this technology.",
         "aligned_token_ids": [
           65,
           70,
           71,
           72,
-          73,
           75,
           76,
           77,
@@ -536,16 +573,13 @@
     "claims": [
       {
         "claim_text": "Geo-engineering materials include nano aluminum.",
-        "decoded_claim": " geo-engineering materials, such as nano aluminum",
+        "decoded_claim": " geo-engineering materials nano aluminum",
         "sentence": "The spraying of geo-engineering materials, such as nano aluminum and barium, is typically performed in a pattern that follows the sun's movement across the sky.",
         "aligned_token_ids": [
           3,
           4,
           5,
           6,
-          7,
-          8,
-          9,
           10,
           11
         ]
@@ -564,8 +598,60 @@
         ]
       },
       {
+        "claim_text": "The spraying of geo-engineering materials is typically performed in a pattern.",
+        "decoded_claim": "The spraying of geo-engineering materials is typically performed in a pattern",
+        "sentence": "The spraying of geo-engineering materials, such as nano aluminum and barium, is typically performed in a pattern that follows the sun's movement across the sky.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      {
         "claim_text": "The spraying of geo-engineering materials follows the sun's movement across the sky.",
-        "decoded_claim": " spraying begins heavily in the early morning as the sun continues throughout the day in the direction of the sun",
+        "decoded_claim": " spraying begins heavily in the early morning the sun continues throughout the day the planes dispersing the materials in the direction of the sun",
+        "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
+        "aligned_token_ids": [
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          47,
+          48,
+          49,
+          50,
+          53,
+          54,
+          55,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64
+        ]
+      },
+      {
+        "claim_text": "The spraying begins heavily in the early morning as the sun rises.",
+        "decoded_claim": " spraying begins heavily in the early morning as the sun rises",
         "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
         "aligned_token_ids": [
           33,
@@ -578,34 +664,11 @@
           41,
           42,
           43,
-          47,
-          48,
-          49,
-          50,
-          59,
-          60,
-          61,
-          62,
-          63,
-          64
+          44
         ]
       },
       {
-        "claim_text": "The spraying of geo-engineering materials begins heavily in the early morning.",
-        "decoded_claim": " spraying begins heavily in the early morning",
-        "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
-        "aligned_token_ids": [
-          33,
-          34,
-          35,
-          36,
-          37,
-          38,
-          39
-        ]
-      },
-      {
-        "claim_text": "The spraying of geo-engineering materials continues throughout the day.",
+        "claim_text": "The spraying continues throughout the day.",
         "decoded_claim": " spraying continues throughout the day",
         "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
         "aligned_token_ids": [
@@ -617,7 +680,7 @@
         ]
       },
       {
-        "claim_text": "Planes disperse geo-engineering materials in the direction of the sun.",
+        "claim_text": "Planes disperse materials in the direction of the sun.",
         "decoded_claim": " planes dispersing the materials in the direction of the sun",
         "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
         "aligned_token_ids": [
@@ -635,8 +698,34 @@
         ]
       },
       {
-        "claim_text": "The spraying of geo-engineering materials intensifies in the late afternoon in the western sky.",
-        "decoded_claim": " the late afternoon, the spraying intensifies again in the western sky",
+        "claim_text": "The spraying begins heavily in the early morning.",
+        "decoded_claim": " spraying begins heavily in the early morning",
+        "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
+        "aligned_token_ids": [
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39
+        ]
+      },
+      {
+        "claim_text": "The spraying continues throughout the day.",
+        "decoded_claim": " spraying continues throughout the day",
+        "sentence": "The spraying begins heavily in the early morning, as the sun rises, and continues throughout the day, with the planes dispersing the materials in the direction of the sun.",
+        "aligned_token_ids": [
+          33,
+          47,
+          48,
+          49,
+          50
+        ]
+      },
+      {
+        "claim_text": "In the late afternoon, the spraying intensifies in the western sky.",
+        "decoded_claim": " the late afternoon, the spraying intensifies in the western sky",
         "sentence": "In the late afternoon, the spraying intensifies again in the western sky as the sun sets.",
         "aligned_token_ids": [
           67,
@@ -647,7 +736,6 @@
           72,
           73,
           74,
-          75,
           76,
           77,
           78,
@@ -655,13 +743,45 @@
         ]
       },
       {
-        "claim_text": "Geo-engineering materials dissipate and fall to the ground in the early evening.",
-        "decoded_claim": " materials dissipate fall to the ground in the early evening",
+        "claim_text": "The spraying intensifies again in the late afternoon.",
+        "decoded_claim": " the late afternoon, the spraying intensifies again",
+        "sentence": "In the late afternoon, the spraying intensifies again in the western sky as the sun sets.",
+        "aligned_token_ids": [
+          67,
+          68,
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75
+        ]
+      },
+      {
+        "claim_text": "The spraying intensifies in the western sky as the sun sets.",
+        "decoded_claim": " spraying intensifies western sky sun sets",
+        "sentence": "In the late afternoon, the spraying intensifies again in the western sky as the sun sets.",
+        "aligned_token_ids": [
+          72,
+          73,
+          74,
+          78,
+          79,
+          82,
+          83
+        ]
+      },
+      {
+        "claim_text": "The materials dissipate and fall to the ground in the early evening.",
+        "decoded_claim": " materials then dissipate and fall to the ground in the early evening",
         "sentence": "The materials then dissipate and fall to the ground in the early evening, after which the planes return to their bases to refuel and prepare for the next day's spraying.",
         "aligned_token_ids": [
           86,
+          87,
           88,
           89,
+          90,
           91,
           92,
           93,
@@ -689,16 +809,12 @@
         ]
       },
       {
-        "claim_text": "Planes prepare for the next day's spraying after refueling.",
-        "decoded_claim": " planes refuel prepare for the next day's spraying",
+        "claim_text": "Planes prepare for the next day's spraying.",
+        "decoded_claim": " planes prepare next day's spraying",
         "sentence": "The materials then dissipate and fall to the ground in the early evening, after which the planes return to their bases to refuel and prepare for the next day's spraying.",
         "aligned_token_ids": [
           103,
-          109,
-          110,
           112,
-          113,
-          114,
           115,
           116,
           117,
@@ -902,19 +1018,20 @@
       },
       {
         "claim_text": "Chemtrails contain chemicals.",
-        "decoded_claim": "Chemtrails contain chemicals",
+        "decoded_claim": "Chemtrails contain toxic chemicals",
         "sentence": "Chemtrails contain a toxic brew of poisonous heavy metals, chemicals, and other hazardous ingredients, including barium, nano aluminium, coated fibreglass, radioactive thorium, cadmium, chromium, nickel, desiccated blood mould spores, yellow fungal myotoxins, ethylene dibromide, and polymer fibres.",
         "aligned_token_ids": [
           0,
           1,
           2,
           3,
+          5,
           12
         ]
       },
       {
         "claim_text": "Chemtrails contain hazardous ingredients.",
-        "decoded_claim": "Chemtrails contain toxic poisonous chemicals hazardous ingredients",
+        "decoded_claim": "Chemtrails contain toxic poisonous heavy metals chemicals hazardous ingredients",
         "sentence": "Chemtrails contain a toxic brew of poisonous heavy metals, chemicals, and other hazardous ingredients, including barium, nano aluminium, coated fibreglass, radioactive thorium, cadmium, chromium, nickel, desiccated blood mould spores, yellow fungal myotoxins, ethylene dibromide, and polymer fibres.",
         "aligned_token_ids": [
           0,
@@ -923,6 +1040,8 @@
           3,
           5,
           8,
+          9,
+          10,
           12,
           16,
           17
@@ -1086,6 +1205,20 @@
         ]
       },
       {
+        "claim_text": "Food is contaminated with hazardous substances from crops.",
+        "decoded_claim": " toxic poisonous heavy metals chemicals hazardous ingredients",
+        "sentence": "Chemtrails contain a toxic brew of poisonous heavy metals, chemicals, and other hazardous ingredients, including barium, nano aluminium, coated fibreglass, radioactive thorium, cadmium, chromium, nickel, desiccated blood mould spores, yellow fungal myotoxins, ethylene dibromide, and polymer fibres.",
+        "aligned_token_ids": [
+          5,
+          8,
+          9,
+          10,
+          12,
+          16,
+          17
+        ]
+      },
+      {
         "claim_text": "Chemtrails are sprayed into the atmosphere.",
         "decoded_claim": " chemtrails are sprayed into the atmosphere",
         "sentence": "Firstly, when chemtrails are sprayed into the atmosphere, they eventually fall to the ground as rainfall, contaminating our water sources.",
@@ -1117,7 +1250,7 @@
         ]
       },
       {
-        "claim_text": "Rainfall from chemtrails contaminates water sources.",
+        "claim_text": "Chemtrails contaminate water sources.",
         "decoded_claim": " chemtrails fall to the ground as rainfall contaminating our water sources",
         "sentence": "Firstly, when chemtrails are sprayed into the atmosphere, they eventually fall to the ground as rainfall, contaminating our water sources.",
         "aligned_token_ids": [
@@ -1139,11 +1272,13 @@
       },
       {
         "claim_text": "Contaminated water is used to irrigate crops.",
-        "decoded_claim": " tainted water used to irrigate crops",
+        "decoded_claim": " tainted water is then used to irrigate crops",
         "sentence": "This tainted water is then used to irrigate crops, which absorb these toxic chemicals.",
         "aligned_token_ids": [
           104,
           105,
+          106,
+          107,
           108,
           109,
           110,
@@ -1153,11 +1288,13 @@
       },
       {
         "claim_text": "Crops absorb toxic chemicals from contaminated water.",
-        "decoded_claim": " tainted water irrigate crops absorb toxic chemicals",
+        "decoded_claim": " tainted water used to irrigate crops absorb toxic chemicals",
         "sentence": "This tainted water is then used to irrigate crops, which absorb these toxic chemicals.",
         "aligned_token_ids": [
           104,
           105,
+          108,
+          109,
           110,
           111,
           112,
@@ -1167,26 +1304,15 @@
         ]
       },
       {
-        "claim_text": "Food is contaminated with hazardous substances from crops.",
-        "decoded_claim": " tainted irrigate crops absorb toxic chemicals",
-        "sentence": "This tainted water is then used to irrigate crops, which absorb these toxic chemicals.",
-        "aligned_token_ids": [
-          104,
-          110,
-          111,
-          112,
-          115,
-          117,
-          118
-        ]
-      },
-      {
-        "claim_text": "Inhaling air with chemtrail chemicals can cause health problems.",
-        "decoded_claim": " breathe air inhale these chemicals can cause serious health problems",
+        "claim_text": "Inhaling air with chemtrails can cause health problems.",
+        "decoded_claim": " breathe in the air we inhale these chemicals can cause serious health problems",
         "sentence": "Additionally, when we breathe in the air, we inhale these chemicals, which can cause serious health problems, including neurological disorders and damage to our brain function and heart.",
         "aligned_token_ids": [
           140,
+          141,
+          142,
           143,
+          145,
           146,
           147,
           148,
@@ -1199,10 +1325,17 @@
         ]
       },
       {
-        "claim_text": "Chemtrail chemicals can cause neurological disorders.",
-        "decoded_claim": " these chemicals can cause neurological disorders",
+        "claim_text": "Inhaling air with chemtrails can cause neurological disorders.",
+        "decoded_claim": " breathe in the air we inhale these chemicals can cause neurological disorders",
         "sentence": "Additionally, when we breathe in the air, we inhale these chemicals, which can cause serious health problems, including neurological disorders and damage to our brain function and heart.",
         "aligned_token_ids": [
+          140,
+          141,
+          142,
+          143,
+          145,
+          146,
+          147,
           148,
           149,
           152,
@@ -1212,35 +1345,47 @@
         ]
       },
       {
-        "claim_text": "Chemtrail chemicals can damage brain function.",
-        "decoded_claim": " chemicals cause neurological disorders damage brain function",
+        "claim_text": "Inhaling air with chemtrails can damage brain function.",
+        "decoded_claim": " breathe air inhale these chemicals cause damage brain function",
         "sentence": "Additionally, when we breathe in the air, we inhale these chemicals, which can cause serious health problems, including neurological disorders and damage to our brain function and heart.",
         "aligned_token_ids": [
+          140,
+          143,
+          146,
+          147,
+          148,
           149,
           153,
-          159,
-          160,
           162,
           165,
           166
         ]
       },
       {
-        "claim_text": "Chemtrail chemicals can damage heart function.",
-        "decoded_claim": " these chemicals can cause serious health problems damage to our heart",
-        "sentence": "Additionally, when we breathe in the air, we inhale these chemicals, which can cause serious health problems, including neurological disorders and damage to our brain function and heart.",
+        "claim_text": "Chemtrails reach us through various pathways.",
+        "decoded_claim": " reach us through various pathways",
+        "sentence": "These substances reach us through various pathways.",
         "aligned_token_ids": [
-          148,
-          149,
-          152,
-          153,
-          154,
-          155,
-          156,
-          162,
-          163,
-          164,
-          168
+          70,
+          71,
+          72,
+          73,
+          74
+        ]
+      },
+      {
+        "claim_text": "Chemtrails contaminate the food we eat.",
+        "decoded_claim": " the food we eat contaminated these hazardous substances",
+        "sentence": "As a result, the food we eat is also contaminated with these hazardous substances.",
+        "aligned_token_ids": [
+          124,
+          125,
+          126,
+          127,
+          130,
+          132,
+          133,
+          134
         ]
       }
     ]
@@ -1382,7 +1527,7 @@
       },
       {
         "claim_text": "Officials voted into power are running geoengineering programs.",
-        "decoded_claim": "Geoengineering programs are being run by governments specifically the officials who have been voted into power",
+        "decoded_claim": "Geoengineering programs are being run by governments, specifically the officials who have been voted into power",
         "sentence": "Geoengineering programs are being run and approved by governments, specifically the officials who have been voted into power and are expected to protect the well-being of their citizens.",
         "aligned_token_ids": [
           0,
@@ -1391,32 +1536,6 @@
           3,
           4,
           5,
-          8,
-          9,
-          11,
-          12,
-          13,
-          14,
-          15,
-          16,
-          17,
-          18,
-          19
-        ]
-      },
-      {
-        "claim_text": "Officials voted into power are approving geoengineering programs.",
-        "decoded_claim": "Geoengineering programs are being run and approved by governments, specifically the officials who have been voted into power",
-        "sentence": "Geoengineering programs are being run and approved by governments, specifically the officials who have been voted into power and are expected to protect the well-being of their citizens.",
-        "aligned_token_ids": [
-          0,
-          1,
-          2,
-          3,
-          4,
-          5,
-          6,
-          7,
           8,
           9,
           10,
@@ -1432,11 +1551,43 @@
         ]
       },
       {
+        "claim_text": "Officials voted into power are approving geoengineering programs.",
+        "decoded_claim": "Geoengineering programs are being run and approved by governments specifically the officials who have been voted into power",
+        "sentence": "Geoengineering programs are being run and approved by governments, specifically the officials who have been voted into power and are expected to protect the well-being of their citizens.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      {
         "claim_text": "Officials are expected to protect the well-being of their citizens.",
-        "decoded_claim": " officials are expected to protect the well-being of their citizens",
+        "decoded_claim": " officials have been voted into power and are expected to protect the well-being of their citizens",
         "sentence": "Geoengineering programs are being run and approved by governments, specifically the officials who have been voted into power and are expected to protect the well-being of their citizens.",
         "aligned_token_ids": [
           13,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
           21,
           22,
           23,
@@ -1467,13 +1618,14 @@
         ]
       },
       {
-        "claim_text": "The effects of geoengineering programs suggest they are used for population control.",
-        "decoded_claim": " the effects suggest they are being used as a form of population control",
+        "claim_text": "Geoengineering programs are suggested to be used as a form of population control.",
+        "decoded_claim": " the effects suggest that they are being used as a form of population control",
         "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
         "aligned_token_ids": [
           34,
           47,
           48,
+          49,
           50,
           51,
           52,
@@ -1487,26 +1639,19 @@
         ]
       },
       {
-        "claim_text": "The effects of geoengineering programs suggest they are used for culling.",
-        "decoded_claim": " the effects suggest they are being used as a form of population control orculling",
+        "claim_text": "Geoengineering programs are suggested to be used for culling.",
+        "decoded_claim": " programs suggest used form population controlculling,\"",
         "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
         "aligned_token_ids": [
-          34,
-          47,
+          39,
           48,
-          50,
-          51,
-          52,
           53,
-          54,
-          55,
           56,
-          57,
           58,
           59,
-          60,
           62,
-          63
+          63,
+          64
         ]
       },
       {
@@ -1524,13 +1669,17 @@
       },
       {
         "claim_text": "Geoengineering programs cause damage to life support systems.",
-        "decoded_claim": " programs causing immense damage life support systems",
+        "decoded_claim": " causing immense damage to the planet and its life support systems",
         "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
         "aligned_token_ids": [
-          39,
           65,
           66,
           67,
+          68,
+          69,
+          70,
+          71,
+          72,
           73,
           74,
           75
@@ -1550,22 +1699,7 @@
       },
       {
         "claim_text": "Geoengineering programs cause neurological disorders in humans.",
-        "decoded_claim": " programs causing health problems humans including neurological disorders",
-        "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
-        "aligned_token_ids": [
-          39,
-          65,
-          81,
-          82,
-          84,
-          86,
-          87,
-          88
-        ]
-      },
-      {
-        "claim_text": "Geoengineering programs cause other serious health issues in humans.",
-        "decoded_claim": " causing severe health problems for humans, including other serious issues",
+        "decoded_claim": " causing severe health problems for humans, including neurological disorders",
         "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
         "aligned_token_ids": [
           65,
@@ -1576,9 +1710,42 @@
           84,
           85,
           86,
+          87,
+          88
+        ]
+      },
+      {
+        "claim_text": "Geoengineering programs cause other serious health issues in humans.",
+        "decoded_claim": " causing severe health problems for humans, including neurological disorders and other serious issues",
+        "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
+        "aligned_token_ids": [
+          65,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
           90,
           91,
           92
+        ]
+      },
+      {
+        "claim_text": "Geoengineering programs cause immense damage to life support systems.",
+        "decoded_claim": " causing immense damage life support systems",
+        "sentence": "However, the true purpose behind these programs is not explicitly stated, but the effects suggest that they are being used as a form of population control or \"culling,\" causing immense damage to the planet and its life support systems, as well as severe health problems for humans, including neurological disorders and other serious issues.",
+        "aligned_token_ids": [
+          65,
+          66,
+          67,
+          73,
+          74,
+          75
         ]
       }
     ]
@@ -1681,38 +1848,129 @@
     ],
     "claims": [
       {
-        "claim_text": "There is evidence for undisclosed ingredients in COVID-19 injection vials in the UK.",
-        "decoded_claim": " evidence was initially found in a single injection vial and later confirmed in further samples from the three main manufacturers in the UK",
-        "sentence": "This evidence was initially found in a single injection vial and later confirmed in further samples from the three main manufacturers in the UK: Pfizer, Moderna, and AstraZeneca.",
+        "claim_text": "The COVID-19 injection vials in the UK contain undisclosed ingredients.",
+        "decoded_claim": " undisclosed ingredients COVID-19 injection vials in the UK",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
         "aligned_token_ids": [
-          52,
-          53,
-          54,
-          55,
-          56,
-          57,
-          58,
-          59,
-          60,
-          61,
-          62,
-          63,
-          64,
-          65,
-          66,
-          67,
-          68,
-          69,
-          70,
-          71,
-          72,
-          73,
-          74,
-          75
+          3,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
         ]
       },
       {
-        "claim_text": "The evidence was detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "claim_text": "The undisclosed ingredients include graphene compounds.",
+        "decoded_claim": " undisclosed ingredients includes the presence of graphene compounds",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          3,
+          4,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      {
+        "claim_text": "The undisclosed ingredients include SP3 carbon.",
+        "decoded_claim": " undisclosed ingredients includes SP3 carbon",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          3,
+          4,
+          16,
+          23,
+          24,
+          25
+        ]
+      },
+      {
+        "claim_text": "The undisclosed ingredients include iron oxide.",
+        "decoded_claim": " undisclosed ingredients includes iron oxide",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          3,
+          4,
+          16,
+          27,
+          28
+        ]
+      },
+      {
+        "claim_text": "The undisclosed ingredients include carbon derivatives.",
+        "decoded_claim": " undisclosed ingredients includes carbon derivatives",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          3,
+          4,
+          16,
+          25,
+          31
+        ]
+      },
+      {
+        "claim_text": "The undisclosed ingredients include glass shards.",
+        "decoded_claim": " undisclosed ingredients includes glass shards",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          3,
+          4,
+          16,
+          34,
+          35
+        ]
+      },
+      {
+        "claim_text": "The further samples were from Moderna.",
+        "decoded_claim": " injection vials in the UK",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      {
+        "claim_text": "The evidence for undisclosed ingredients was found in the UK.",
+        "decoded_claim": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK in a UK laboratory",
+        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          46,
+          47,
+          48,
+          49
+        ]
+      },
+      {
+        "claim_text": "Raman Spectroscopy analysis detected these ingredients in a UK laboratory.",
         "decoded_claim": " evidence was initially found in a single injection vial and later confirmed in further samples",
         "sentence": "This evidence was initially found in a single injection vial and later confirmed in further samples from the three main manufacturers in the UK: Pfizer, Moderna, and AstraZeneca.",
         "aligned_token_ids": [
@@ -1785,17 +2043,6 @@
         ]
       },
       {
-        "claim_text": "The further samples were from Moderna.",
-        "decoded_claim": " further samples Moderna",
-        "sentence": "This evidence was initially found in a single injection vial and later confirmed in further samples from the three main manufacturers in the UK: Pfizer, Moderna, and AstraZeneca.",
-        "aligned_token_ids": [
-          66,
-          67,
-          79,
-          80
-        ]
-      },
-      {
         "claim_text": "The further samples were from AstraZeneca.",
         "decoded_claim": " further samples AstraZeneca",
         "sentence": "This evidence was initially found in a single injection vial and later confirmed in further samples from the three main manufacturers in the UK: Pfizer, Moderna, and AstraZeneca.",
@@ -1809,70 +2056,19 @@
         ]
       },
       {
-        "claim_text": "The evidence includes the presence of graphene compounds.",
-        "decoded_claim": " includes the presence of graphene compounds",
-        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
+        "claim_text": "The evidence was confirmed in samples from the three main manufacturers in the UK.",
+        "decoded_claim": " evidence confirmed samples three main manufacturers in the UK",
+        "sentence": "This evidence was initially found in a single injection vial and later confirmed in further samples from the three main manufacturers in the UK: Pfizer, Moderna, and AstraZeneca.",
         "aligned_token_ids": [
-          16,
-          17,
-          18,
-          19,
-          20,
-          21
-        ]
-      },
-      {
-        "claim_text": "The evidence includes the presence of SP3 carbon.",
-        "decoded_claim": " includes the presence of SP3 carbon",
-        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
-        "aligned_token_ids": [
-          16,
-          17,
-          18,
-          19,
-          23,
-          24,
-          25
-        ]
-      },
-      {
-        "claim_text": "The evidence includes the presence of iron oxide.",
-        "decoded_claim": " evidence includes the presence of iron oxide",
-        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
-        "aligned_token_ids": [
-          1,
-          16,
-          17,
-          18,
-          19,
-          27,
-          28
-        ]
-      },
-      {
-        "claim_text": "The evidence includes the presence of carbon derivatives.",
-        "decoded_claim": " includes the presence of carbon derivatives",
-        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
-        "aligned_token_ids": [
-          16,
-          17,
-          18,
-          19,
-          25,
-          31
-        ]
-      },
-      {
-        "claim_text": "The evidence includes the presence of glass shards.",
-        "decoded_claim": " includes the presence of glass shards",
-        "sentence": "The evidence for undisclosed ingredients in the COVID-19 injection vials in the UK includes the presence of graphene compounds, SP3 carbon, iron oxide, carbon derivatives, and glass shards, as detected by Raman Spectroscopy analysis in a UK laboratory.",
-        "aligned_token_ids": [
-          16,
-          17,
-          18,
-          19,
-          34,
-          35
+          52,
+          64,
+          67,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75
         ]
       }
     ]
@@ -1973,7 +2169,7 @@
       },
       {
         "claim_text": "Ingesting fluoride has been associated with health risks.",
-        "decoded_claim": " fluoride ingesting has been associated health risks",
+        "decoded_claim": " fluoride ingesting has been associated with various health risks",
         "sentence": "RFK Jr. is targeting fluoride in our water because ingesting it has been associated with various health risks, including arthritis, bone fractures, bone cancer, thyroid disorders, cognitive impairment, and lower IQ in children.",
         "aligned_token_ids": [
           6,
@@ -1982,6 +2178,8 @@
           14,
           15,
           16,
+          17,
+          18,
           19,
           20
         ]
@@ -2020,16 +2218,15 @@
       },
       {
         "claim_text": "Ingesting fluoride has been associated with bone cancer.",
-        "decoded_claim": " ingesting it has been associated with bone cancer",
+        "decoded_claim": " fluoride ingesting has been associated bone cancer",
         "sentence": "RFK Jr. is targeting fluoride in our water because ingesting it has been associated with various health risks, including arthritis, bone fractures, bone cancer, thyroid disorders, cognitive impairment, and lower IQ in children.",
         "aligned_token_ids": [
+          6,
           11,
           12,
-          13,
           14,
           15,
           16,
-          17,
           25,
           29
         ]
@@ -2051,9 +2248,26 @@
       },
       {
         "claim_text": "Ingesting fluoride has been associated with cognitive impairment.",
-        "decoded_claim": " ingesting it has been associated with cognitive impairment",
+        "decoded_claim": " fluoride ingesting it has been associated cognitive impairment",
         "sentence": "RFK Jr. is targeting fluoride in our water because ingesting it has been associated with various health risks, including arthritis, bone fractures, bone cancer, thyroid disorders, cognitive impairment, and lower IQ in children.",
         "aligned_token_ids": [
+          6,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          34,
+          35
+        ]
+      },
+      {
+        "claim_text": "Ingesting fluoride has been associated with lower IQ in children.",
+        "decoded_claim": " fluoride ingesting it has been associated with lower IQ in children",
+        "sentence": "RFK Jr. is targeting fluoride in our water because ingesting it has been associated with various health risks, including arthritis, bone fractures, bone cancer, thyroid disorders, cognitive impairment, and lower IQ in children.",
+        "aligned_token_ids": [
+          6,
           11,
           12,
           13,
@@ -2061,21 +2275,6 @@
           15,
           16,
           17,
-          34,
-          35
-        ]
-      },
-      {
-        "claim_text": "Ingesting fluoride has been associated with lower IQ in children.",
-        "decoded_claim": " fluoride ingesting has been associated lower IQ in children",
-        "sentence": "RFK Jr. is targeting fluoride in our water because ingesting it has been associated with various health risks, including arthritis, bone fractures, bone cancer, thyroid disorders, cognitive impairment, and lower IQ in children.",
-        "aligned_token_ids": [
-          6,
-          11,
-          12,
-          14,
-          15,
-          16,
           38,
           39,
           40,
@@ -2133,6 +2332,20 @@
           64,
           65,
           66
+        ]
+      },
+      {
+        "claim_text": "Fluoride can potentially lead to lifelong health consequences.",
+        "decoded_claim": " fluoride potentially leading to lifelong health consequences",
+        "sentence": "Additionally, studies have shown that fluoride can alter the gut microbiome, potentially leading to lifelong health consequences, particularly in children.",
+        "aligned_token_ids": [
+          49,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62
         ]
       }
     ]
@@ -2287,13 +2500,14 @@
       },
       {
         "claim_text": "Dr. Peter Marks was allegedly responsible for maintaining the mRNA vaccine authorizations.",
-        "decoded_claim": "Dr. Peter Marks was allegedly responsible for maintaining the mRNA vaccine authorizations",
+        "decoded_claim": "Dr. Peter Marks, was allegedly responsible for maintaining the mRNA vaccine authorizations",
         "sentence": "Dr. Peter Marks, the former director of the FDA's Center for Biologics Evaluation and Research (CBER), was allegedly responsible for maintaining the mRNA vaccine authorizations despite mounting safety signals.",
         "aligned_token_ids": [
           0,
           1,
           2,
           3,
+          4,
           24,
           25,
           26,
@@ -2323,18 +2537,69 @@
       },
       {
         "claim_text": "Under Dr. Peter Marks' leadership, concerns over myocarditis were minimized.",
-        "decoded_claim": " his leadership, concerns over myocarditis were minimized",
-        "sentence": "Under his leadership, concerns over myocarditis were minimized, booster authorizations were rushed, and product labeling was never updated to reflect new risk profiles.",
+        "decoded_claim": " was reportedly resistant to transparency regarding vaccine safety data",
+        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
         "aligned_token_ids": [
-          40,
-          41,
-          42,
-          43,
-          44,
-          45,
-          46,
-          47,
-          48
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77
+        ]
+      },
+      {
+        "claim_text": "Dr. Peter Marks was reportedly resistant to transparency regarding vaccine safety data.",
+        "decoded_claim": " was reportedly resistant to transparency regarding vaccine safety data",
+        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
+        "aligned_token_ids": [
+          69,
+          70,
+          71,
+          72,
+          73,
+          74,
+          75,
+          76,
+          77
+        ]
+      },
+      {
+        "claim_text": "Dr. Peter Marks was seen as a blockade to reform.",
+        "decoded_claim": " was seen as a blockade to reform",
+        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
+        "aligned_token_ids": [
+          69,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85
+        ]
+      },
+      {
+        "claim_text": "An insider described Dr. Peter Marks as 'the last person on Earth who would ever take action.'",
+        "decoded_claim": " him the last person on Earth who would ever take action from an insider",
+        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
+        "aligned_token_ids": [
+          88,
+          89,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          104,
+          105,
+          106
         ]
       },
       {
@@ -2368,62 +2633,6 @@
           64,
           65,
           66
-        ]
-      },
-      {
-        "claim_text": "Dr. Peter Marks was reportedly resistant to transparency regarding vaccine safety data.",
-        "decoded_claim": " reportedly resistant to transparency regarding vaccine safety data",
-        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
-        "aligned_token_ids": [
-          70,
-          71,
-          72,
-          73,
-          74,
-          75,
-          76,
-          77
-        ]
-      },
-      {
-        "claim_text": "Dr. Peter Marks was seen as a blockade to reform.",
-        "decoded_claim": " was seen as a blockade to reform",
-        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
-        "aligned_token_ids": [
-          69,
-          80,
-          81,
-          82,
-          83,
-          84,
-          85
-        ]
-      },
-      {
-        "claim_text": "An insider described Dr. Peter Marks as 'the last person on Earth who would ever take action.'",
-        "decoded_claim": " earning him the description as \"the last person on Earth who would ever take action\" from an insider",
-        "sentence": "He was reportedly resistant to transparency regarding vaccine safety data and was seen as a blockade to reform, earning him the description as \"the last person on Earth who would ever take action\" from an insider.",
-        "aligned_token_ids": [
-          87,
-          88,
-          89,
-          90,
-          91,
-          92,
-          93,
-          94,
-          95,
-          96,
-          97,
-          98,
-          99,
-          100,
-          101,
-          102,
-          103,
-          104,
-          105,
-          106
         ]
       }
     ]
@@ -2555,7 +2764,7 @@
       },
       {
         "claim_text": "In structured water, hydrogen molecules arrange into repeating patterns.",
-        "decoded_claim": "Structured water hydrogen molecules arrange themselves into repeating patterns",
+        "decoded_claim": "Structured water hydrogen molecules arrange themselves into repeating",
         "sentence": "Structured water is a unique form of water where the hydrogen and oxygen molecules arrange themselves into repeating, ordered, and geometric crystal-like patterns.",
         "aligned_token_ids": [
           0,
@@ -2565,8 +2774,7 @@
           14,
           15,
           16,
-          17,
-          25
+          17
         ]
       },
       {
@@ -2586,12 +2794,20 @@
         ]
       },
       {
-        "claim_text": "Structured water has geometric crystal-like patterns.",
-        "decoded_claim": "Structured water geometric crystal-like patterns",
+        "claim_text": "The patterns in structured water are ordered.",
+        "decoded_claim": "Structured water arrange themselves into repeating, ordered, and geometric crystal-like patterns",
         "sentence": "Structured water is a unique form of water where the hydrogen and oxygen molecules arrange themselves into repeating, ordered, and geometric crystal-like patterns.",
         "aligned_token_ids": [
           0,
           1,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
           22,
           23,
           24,
@@ -2599,81 +2815,44 @@
         ]
       },
       {
-        "claim_text": "Structured water is achieved when water is exposed to heat.",
-        "decoded_claim": " achieved when water is exposed to heat",
-        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
+        "claim_text": "The patterns in structured water are crystal-like.",
+        "decoded_claim": "Structured water arrange themselves into repeating, ordered, and geometric crystal-like patterns",
+        "sentence": "Structured water is a unique form of water where the hydrogen and oxygen molecules arrange themselves into repeating, ordered, and geometric crystal-like patterns.",
         "aligned_token_ids": [
-          30,
-          31,
-          32,
-          33,
-          34,
-          35,
-          36
+          0,
+          1,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25
         ]
       },
       {
-        "claim_text": "Structured water is achieved when water is exposed to light.",
-        "decoded_claim": " arrangement is achieved when water is exposed to heat and light",
-        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
-        "aligned_token_ids": [
-          28,
-          29,
-          30,
-          31,
-          32,
-          33,
-          34,
-          35,
-          36,
-          37,
-          38
-        ]
-      },
-      {
-        "claim_text": "Structured water is achieved when water is exposed to infrared light.",
-        "decoded_claim": " arrangement is achieved when water is exposed to heat and light, including infrared light",
-        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
-        "aligned_token_ids": [
-          28,
-          29,
-          30,
-          31,
-          32,
-          33,
-          34,
-          35,
-          36,
-          37,
-          38,
-          39,
-          40,
-          41,
-          42
-        ]
-      },
-      {
-        "claim_text": "Structured water is achieved on a hydrophilic surface.",
-        "decoded_claim": " is achieved on a hydrophilic surface",
-        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
-        "aligned_token_ids": [
-          29,
-          30,
-          44,
-          45,
-          46,
-          47,
-          48,
-          49
-        ]
-      },
-      {
-        "claim_text": "Structured water has a honeycombed lattice-like appearance.",
-        "decoded_claim": "ured water honeycombed lattice-like appearance",
+        "claim_text": "The patterns in structured water are geometric.",
+        "decoded_claim": "ured water appearance",
         "sentence": "Structured water has distinct properties, including a honeycombed lattice-like appearance, increased viscosity, density, and alkalinity compared to regular water.",
         "aligned_token_ids": [
           52,
           53,
+          65
+        ]
+      },
+      {
+        "claim_text": "Structured water has a honeycombed lattice-like appearance.",
+        "decoded_claim": "ured water has honeycombed lattice-like appearance",
+        "sentence": "Structured water has distinct properties, including a honeycombed lattice-like appearance, increased viscosity, density, and alkalinity compared to regular water.",
+        "aligned_token_ids": [
+          52,
+          53,
+          54,
           60,
           61,
           62,
@@ -2699,11 +2878,12 @@
       },
       {
         "claim_text": "Structured water has increased density compared to regular water.",
-        "decoded_claim": "ured water density compared to regular water",
+        "decoded_claim": "ured water increased density compared to regular water",
         "sentence": "Structured water has distinct properties, including a honeycombed lattice-like appearance, increased viscosity, density, and alkalinity compared to regular water.",
         "aligned_token_ids": [
           52,
           53,
+          67,
           70,
           75,
           76,
@@ -2725,6 +2905,72 @@
           76,
           77,
           78
+        ]
+      },
+      {
+        "claim_text": "Structured water is formed when exposed to heat.",
+        "decoded_claim": " arrangement achieved when water is exposed to heat",
+        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
+        "aligned_token_ids": [
+          28,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36
+        ]
+      },
+      {
+        "claim_text": "Structured water is formed when exposed to light.",
+        "decoded_claim": " arrangement achieved when water is exposed to heat and light",
+        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
+        "aligned_token_ids": [
+          28,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38
+        ]
+      },
+      {
+        "claim_text": "Structured water is formed when exposed to infrared light.",
+        "decoded_claim": " is achieved when water is exposed to heat and light, including infrared light",
+        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
+        "aligned_token_ids": [
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42
+        ]
+      },
+      {
+        "claim_text": "Structured water forms on a hydrophilic surface.",
+        "decoded_claim": " on a hydrophilic surface",
+        "sentence": "This arrangement is achieved when water is exposed to heat and light, including infrared light, on a hydrophilic surface.",
+        "aligned_token_ids": [
+          44,
+          45,
+          46,
+          47,
+          48,
+          49
         ]
       },
       {
@@ -2759,12 +3005,13 @@
       },
       {
         "claim_text": "The negative energy charge in structured water is similar to that found in healthy human cells.",
-        "decoded_claim": " negative energy charge similar to that found in healthy human cells",
+        "decoded_claim": " negative energy charge, similar to that found in healthy human cells.",
         "sentence": "Additionally, it possesses a negative energy charge, similar to that found in the earth or healthy human cells.",
         "aligned_token_ids": [
           85,
           86,
           87,
+          88,
           89,
           90,
           91,
@@ -2772,7 +3019,8 @@
           93,
           97,
           98,
-          99
+          99,
+          100
         ]
       }
     ]
@@ -2923,7 +3171,25 @@
         ]
       },
       {
-        "claim_text": "Small molecule cluster water typically consists of 5 to 8 water molecules.",
+        "claim_text": "Small molecule cluster water typically consists of 5 water molecules.",
+        "decoded_claim": " small molecule cluster water, typically consisting of5 water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          26,
+          30,
+          31
+        ]
+      },
+      {
+        "claim_text": "Small molecule cluster water typically consists of 6 water molecules.",
         "decoded_claim": " small molecule cluster water, typically consisting of5 to8 water molecules",
         "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
         "aligned_token_ids": [
@@ -2943,7 +3209,47 @@
         ]
       },
       {
-        "claim_text": "Macromolecule cluster water is composed of 12 to 20 water molecules.",
+        "claim_text": "Small molecule cluster water typically consists of 7 water molecules.",
+        "decoded_claim": " small molecule cluster water, typically consisting of5 to8 water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          26,
+          27,
+          29,
+          30,
+          31
+        ]
+      },
+      {
+        "claim_text": "Small molecule cluster water typically consists of 8 water molecules.",
+        "decoded_claim": " small molecule cluster water, typically consisting of5 to8 water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          26,
+          27,
+          29,
+          30,
+          31
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 12 water molecules.",
         "decoded_claim": " macromolecule cluster water, which is composed of12 to20 water molecules",
         "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
         "aligned_token_ids": [
@@ -2965,10 +3271,178 @@
         ]
       },
       {
-        "claim_text": "It is more difficult for the body to absorb larger water molecules.",
-        "decoded_claim": " better able to absorb small molecule cluster water compared to macromolecule cluster water",
+        "claim_text": "Macromolecule cluster water is composed of 13 water molecules.",
+        "decoded_claim": " macromolecule cluster water, which is composed of12 to20 water molecules",
         "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
         "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          46,
+          47,
+          49,
+          50,
+          51
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 14 water molecules.",
+        "decoded_claim": " macromolecule cluster water composed water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          43,
+          50,
+          51
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 15 water molecules.",
+        "decoded_claim": " macromolecule cluster water, which is composed of12 to20 water molecules.",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          46,
+          47,
+          49,
+          50,
+          51,
+          52
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 16 water molecules.",
+        "decoded_claim": " macromolecule cluster water, which is composed of12 to20 water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          46,
+          47,
+          49,
+          50,
+          51
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 17 water molecules.",
+        "decoded_claim": " macromolecule cluster water, which is composed of12 to20 water molecules.",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          46,
+          47,
+          49,
+          50,
+          51,
+          52
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 18 water molecules.",
+        "decoded_claim": " macromolecule cluster water, which is composed of12 to20 water molecules.",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          46,
+          47,
+          49,
+          50,
+          51,
+          52
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 19 water molecules.",
+        "decoded_claim": " macromolecule cluster water is composed of20 water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          42,
+          43,
+          44,
+          49,
+          50,
+          51
+        ]
+      },
+      {
+        "claim_text": "Macromolecule cluster water is composed of 20 water molecules.",
+        "decoded_claim": " macromolecule cluster water, which is composed of20 water molecules",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          49,
+          50,
+          51
+        ]
+      },
+      {
+        "claim_text": "Consuming larger water molecules can potentially lead to dehydration.",
+        "decoded_claim": " water cells better able to absorb small molecule cluster water compared to macromolecule cluster water",
+        "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
+        "aligned_token_ids": [
+          3,
+          11,
           13,
           14,
           15,
@@ -2987,27 +3461,27 @@
         ]
       },
       {
-        "claim_text": "Consuming larger water molecules can potentially lead to dehydration.",
-        "decoded_claim": " water cells absorb small molecule cluster water macromolecule cluster water12 to20 water molecules",
+        "claim_text": "Cells can absorb small molecule cluster water better than macromolecule cluster water.",
+        "decoded_claim": " cells are better able to absorb small molecule cluster water compared to macromolecule cluster water",
         "sentence": "The structure of water significantly affects its bioavailability, as cells are better able to absorb small molecule cluster water, typically consisting of 5 to 8 water molecules, compared to macromolecule cluster water, which is composed of 12 to 20 water molecules.",
         "aligned_token_ids": [
-          3,
           11,
+          12,
+          13,
+          14,
+          15,
           16,
           17,
           18,
           19,
           20,
+          33,
+          34,
           35,
           36,
           37,
           38,
-          39,
-          46,
-          47,
-          49,
-          50,
-          51
+          39
         ]
       },
       {
@@ -3047,6 +3521,23 @@
           74,
           75,
           76
+        ]
+      },
+      {
+        "claim_text": "It is more difficult for the body to absorb larger water molecules.",
+        "decoded_claim": " more difficult for the body to absorb larger water molecules",
+        "sentence": "This is because the aquaporin channel in cells, responsible for hydration, can only receive small molecule water at a time, making it more difficult for the body to absorb larger water molecules, potentially leading to dehydration even when consuming sufficient amounts of water.",
+        "aligned_token_ids": [
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89
         ]
       },
       {
@@ -3147,26 +3638,19 @@
         ]
       },
       {
-        "claim_text": "Scalar field energy is an influence that affects water.",
-        "decoded_claim": " influences, such as scalar field energy, formation of water changes",
+        "claim_text": "Scalar field energy affects water.",
+        "decoded_claim": " scalar field energy water changes",
         "sentence": "When exposed to certain influences, such as scalar field energy, the molecular formation of water changes.",
         "aligned_token_ids": [
-          16,
-          17,
-          18,
-          19,
           20,
           21,
           22,
-          23,
-          26,
-          27,
           28,
           29
         ]
       },
       {
-        "claim_text": "When exposed to scalar field energy, the molecular formation of water changes.",
+        "claim_text": "The molecular formation of water changes when exposed to scalar field energy.",
         "decoded_claim": " exposed scalar field energy molecular formation water changes",
         "sentence": "When exposed to certain influences, such as scalar field energy, the molecular formation of water changes.",
         "aligned_token_ids": [
@@ -3196,7 +3680,7 @@
       },
       {
         "claim_text": "Hexagonal shape is the preferred structure of water.",
-        "decoded_claim": " water tends to form hexagonal shapes which is its preferred structure",
+        "decoded_claim": " water tends to form hexagonal shapes preferred structure",
         "sentence": "Specifically, water tends to form hexagonal shapes, which is its preferred structure and allows it to store memory.",
         "aligned_token_ids": [
           33,
@@ -3206,9 +3690,6 @@
           37,
           38,
           39,
-          41,
-          42,
-          43,
           44,
           45
         ]
@@ -3224,6 +3705,2255 @@
           49,
           50,
           51
+        ]
+      }
+    ]
+  },
+  "11": {
+    "question": "How is social security payment calculated?",
+    "retrieval": "Three steps to calculate social security benefits. 1  First, a worker\u2019s previous earnings are restated in terms of today\u2019s wages to reflect wage growth. 2  Second, earnings for the highest 35 years are averaged and divided by the number of months in 35 years to arrive at Average Indexed Monthly Earnings (AIME).\\n\\npassage 2:Benefit estimates depend on your date of birth and on your earnings history. For security, the Quick Calculator does not access your earnings record; instead, it will estimate your earnings based on information you provide.\\n\\npassage 3:1 Second, earnings for the highest 35 years are averaged and divided by the number of months in 35 years to arrive at Average Indexed Monthly Earnings (AIME). 2  Third, the Social Security benefit formula is applied to AIME to produce the Primary Insurance Amount (PIA), the benefit payable at the Full Retirement Age (FRA) .",
+    "input": "\nUsing the provided context, answer the question related to the information in the context. Do not acknoledge or mention the existence of the context in your answer. The answer should be a self-contained unambiguous detailed explanation that can be understood without referring back to the context or the question.\n\n======================\n\nExample: \n\nContext: Female domestic cats can have kittens from spring to late autumn in temperate zones and throughout the year in equatorial regions, with litter sizes often ranging from two to five kittens. Domestic cats are bred and shown at cat fancy events as registered pedigreed cats. Population control includes spaying and neutering, but pet abandonment has exploded the global feral cat population, which has driven the extinction of bird, mammal, and reptile species.\n\nQuestion: What is the typical litter size for domestic cats?\n\nBad answer: Two to five kittens. (This answer refers back to the context and is not self-contained.)\nBad answer: The context states that domestic cats have litters of two to five kittens. (This answer acknowledges the context and is not self-contained.)\nBad answer: The typical litter size for these cats often ranges from two to five kittens. (This answer uses \"these cats\" which is ambiguous without context.)\n\nGood answer: The typical litter size for domestic cats often ranges from two to five kittens.\n\n======================\n\nNow, answer the following:\n\nContext: Three steps to calculate social security benefits. 1  First, a worker\u2019s previous earnings are restated in terms of today\u2019s wages to reflect wage growth. 2  Second, earnings for the highest 35 years are averaged and divided by the number of months in 35 years to arrive at Average Indexed Monthly Earnings (AIME).\\n\\npassage 2:Benefit estimates depend on your date of birth and on your earnings history. For security, the Quick Calculator does not access your earnings record; instead, it will estimate your earnings based on information you provide.\\n\\npassage 3:1 Second, earnings for the highest 35 years are averaged and divided by the number of months in 35 years to arrive at Average Indexed Monthly Earnings (AIME). 2  Third, the Social Security benefit formula is applied to AIME to produce the Primary Insurance Amount (PIA), the benefit payable at the Full Retirement Age (FRA) .\n\nQuestion: How is social security payment calculated?\n\nAnswer:\n",
+    "output": "Social security payment is calculated through a three-step process. First, a worker's previous earnings are adjusted to reflect current wages, accounting for wage growth over time. Second, the earnings from the highest 35 years of work are averaged and divided by the total number of months in that period, resulting in the Average Indexed Monthly Earnings (AIME). Finally, the Social Security benefit formula is applied to the AIME to determine the Primary Insurance Amount (PIA), which is the benefit amount payable at the Full Retirement Age (FRA).",
+    "greedy_tokens": [
+      27414,
+      4868,
+      8323,
+      374,
+      16997,
+      1555,
+      264,
+      2380,
+      30308,
+      1920,
+      13,
+      5629,
+      11,
+      264,
+      12128,
+      596,
+      3766,
+      24608,
+      527,
+      24257,
+      311,
+      8881,
+      1510,
+      23998,
+      11,
+      24043,
+      369,
+      19602,
+      6650,
+      927,
+      892,
+      13,
+      10657,
+      11,
+      279,
+      24608,
+      505,
+      279,
+      8592,
+      220,
+      1758,
+      1667,
+      315,
+      990,
+      527,
+      37956,
+      323,
+      18255,
+      555,
+      279,
+      2860,
+      1396,
+      315,
+      4038,
+      304,
+      430,
+      4261,
+      11,
+      13239,
+      304,
+      279,
+      24478,
+      85504,
+      45434,
+      469,
+      15202,
+      320,
+      32,
+      5778,
+      570,
+      17830,
+      11,
+      279,
+      9983,
+      8398,
+      8935,
+      15150,
+      374,
+      9435,
+      311,
+      279,
+      362,
+      5778,
+      311,
+      8417,
+      279,
+      26150,
+      22413,
+      26868,
+      320,
+      1932,
+      32,
+      705,
+      902,
+      374,
+      279,
+      8935,
+      3392,
+      45691,
+      520,
+      279,
+      8797,
+      70289,
+      13381,
+      320,
+      37,
+      5726,
+      570,
+      128009
+    ],
+    "claims": [
+      {
+        "claim_text": "Social security payment is calculated through a three-step process.",
+        "decoded_claim": "Social security payment is calculated through a three-step process",
+        "sentence": "Social security payment is calculated through a three-step process.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      {
+        "claim_text": "A worker's previous earnings are adjusted to reflect current wages.",
+        "decoded_claim": " a worker's previous earnings are adjusted to reflect current wages",
+        "sentence": "First, a worker's previous earnings are adjusted to reflect current wages, accounting for wage growth over time.",
+        "aligned_token_ids": [
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21,
+          22,
+          23
+        ]
+      },
+      {
+        "claim_text": "The adjustment accounts for wage growth over time.",
+        "decoded_claim": " adjusted accounting for wage growth over time",
+        "sentence": "First, a worker's previous earnings are adjusted to reflect current wages, accounting for wage growth over time.",
+        "aligned_token_ids": [
+          19,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ]
+      },
+      {
+        "claim_text": "Earnings from the highest 35 years of work are averaged.",
+        "decoded_claim": " earnings from the highest35 years of work are averaged",
+        "sentence": "Second, the earnings from the highest 35 years of work are averaged and divided by the total number of months in that period, resulting in the Average Indexed Monthly Earnings (AIME).",
+        "aligned_token_ids": [
+          35,
+          36,
+          37,
+          38,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45
+        ]
+      },
+      {
+        "claim_text": "The total number of months in the 35-year period is used for division.",
+        "decoded_claim": "35 years averaged divided by the total number of months in that period",
+        "sentence": "Second, the earnings from the highest 35 years of work are averaged and divided by the total number of months in that period, resulting in the Average Indexed Monthly Earnings (AIME).",
+        "aligned_token_ids": [
+          40,
+          41,
+          45,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55,
+          56
+        ]
+      },
+      {
+        "claim_text": "The result of the division is the Average Indexed Monthly Earnings (AIME).",
+        "decoded_claim": " averaged divided resulting in the Average Indexed Monthly Earnings (AIME).",
+        "sentence": "Second, the earnings from the highest 35 years of work are averaged and divided by the total number of months in that period, resulting in the Average Indexed Monthly Earnings (AIME).",
+        "aligned_token_ids": [
+          45,
+          47,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69
+        ]
+      },
+      {
+        "claim_text": "The highest 35 years of work are used for calculating earnings.",
+        "decoded_claim": " earnings highest35 years of work are averaged",
+        "sentence": "Second, the earnings from the highest 35 years of work are averaged and divided by the total number of months in that period, resulting in the Average Indexed Monthly Earnings (AIME).",
+        "aligned_token_ids": [
+          35,
+          38,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45
+        ]
+      },
+      {
+        "claim_text": "The Average Indexed Monthly Earnings (AIME) is calculated by dividing the averaged earnings by the total number of months.",
+        "decoded_claim": " earnings are averaged and divided by the total number of months Average Indexed Monthly Earnings (AIME).",
+        "sentence": "Second, the earnings from the highest 35 years of work are averaged and divided by the total number of months in that period, resulting in the Average Indexed Monthly Earnings (AIME).",
+        "aligned_token_ids": [
+          35,
+          44,
+          45,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          52,
+          53,
+          61,
+          62,
+          63,
+          64,
+          65,
+          66,
+          67,
+          68,
+          69
+        ]
+      },
+      {
+        "claim_text": "The Social Security benefit formula is applied to the AIME.",
+        "decoded_claim": " Social Security benefit formula is applied to the AIME",
+        "sentence": "Finally, the Social Security benefit formula is applied to the AIME to determine the Primary Insurance Amount (PIA), which is the benefit amount payable at the Full Retirement Age (FRA).",
+        "aligned_token_ids": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82
+        ]
+      },
+      {
+        "claim_text": "The application of the formula determines the Primary Insurance Amount (PIA).",
+        "decoded_claim": " formula is applied to determine the Primary Insurance Amount (PIA),",
+        "sentence": "Finally, the Social Security benefit formula is applied to the AIME to determine the Primary Insurance Amount (PIA), which is the benefit amount payable at the Full Retirement Age (FRA).",
+        "aligned_token_ids": [
+          76,
+          77,
+          78,
+          79,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92
+        ]
+      },
+      {
+        "claim_text": "The Primary Insurance Amount (PIA) is the benefit amount payable at the Full Retirement Age (FRA).",
+        "decoded_claim": " Primary Insurance Amount (PIA), benefit amount payable Full Retirement Age (FRA).",
+        "sentence": "Finally, the Social Security benefit formula is applied to the AIME to determine the Primary Insurance Amount (PIA), which is the benefit amount payable at the Full Retirement Age (FRA).",
+        "aligned_token_ids": [
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92,
+          96,
+          97,
+          98,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107
+        ]
+      },
+      {
+        "claim_text": "The Primary Insurance Amount (PIA) is determined by applying the Social Security benefit formula to the AIME.",
+        "decoded_claim": " Social Security benefit formula is applied to the AIME to determine the Primary Insurance Amount (PIA),",
+        "sentence": "Finally, the Social Security benefit formula is applied to the AIME to determine the Primary Insurance Amount (PIA), which is the benefit amount payable at the Full Retirement Age (FRA).",
+        "aligned_token_ids": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88,
+          89,
+          90,
+          91,
+          92
+        ]
+      }
+    ]
+  },
+  "12": {
+    "question": "What is the difference between HALT and HASS?",
+    "retrieval": "HALT, HASS and ESS. Highly Accelerated Life Testing (HALT) Highly Accelerated Life Testing (HALT) is a stress testing methodology used during the engineering development phase of a product to quickly reveal design weaknesses.\\n\\npassage 2:HALT is run during the design phase of a program to find design weaknesses and eliminate them. Any stress that exposes design weaknesses that would show up in the normal environments is suitable even if these stresses do not occur in the normal environments to which the product will be exposed.\\n\\npassage 3:The HASS process is a production screen to assure that weak components are precipitated (failed). HALT experience and the step stress empirical evaluation is used to establish a good screen. It is important that the level of stress is tailored to the product. There is no one-stress-fits-all.",
+    "input": "\nUsing the provided context, answer the question related to the information in the context. Do not acknoledge or mention the existence of the context in your answer. The answer should be a self-contained unambiguous detailed explanation that can be understood without referring back to the context or the question.\n\n======================\n\nExample: \n\nContext: Female domestic cats can have kittens from spring to late autumn in temperate zones and throughout the year in equatorial regions, with litter sizes often ranging from two to five kittens. Domestic cats are bred and shown at cat fancy events as registered pedigreed cats. Population control includes spaying and neutering, but pet abandonment has exploded the global feral cat population, which has driven the extinction of bird, mammal, and reptile species.\n\nQuestion: What is the typical litter size for domestic cats?\n\nBad answer: Two to five kittens. (This answer refers back to the context and is not self-contained.)\nBad answer: The context states that domestic cats have litters of two to five kittens. (This answer acknowledges the context and is not self-contained.)\nBad answer: The typical litter size for these cats often ranges from two to five kittens. (This answer uses \"these cats\" which is ambiguous without context.)\n\nGood answer: The typical litter size for domestic cats often ranges from two to five kittens.\n\n======================\n\nNow, answer the following:\n\nContext: HALT, HASS and ESS. Highly Accelerated Life Testing (HALT) Highly Accelerated Life Testing (HALT) is a stress testing methodology used during the engineering development phase of a product to quickly reveal design weaknesses.\\n\\npassage 2:HALT is run during the design phase of a program to find design weaknesses and eliminate them. Any stress that exposes design weaknesses that would show up in the normal environments is suitable even if these stresses do not occur in the normal environments to which the product will be exposed.\\n\\npassage 3:The HASS process is a production screen to assure that weak components are precipitated (failed). HALT experience and the step stress empirical evaluation is used to establish a good screen. It is important that the level of stress is tailored to the product. There is no one-stress-fits-all.\n\nQuestion: What is the difference between HALT and HASS?\n\nAnswer:\n",
+    "output": "HALT (Highly Accelerated Life Testing) and HASS (Highly Accelerated Stress Screening) are two distinct methodologies used in product development and production. The primary difference between HALT and HASS lies in their objectives and application phases.\n\nHALT is a stress testing methodology employed during the engineering development phase of a product to quickly identify and eliminate design weaknesses. It involves subjecting the product to various stresses to reveal potential design flaws, which may not be apparent in normal operating environments.\n\nIn contrast, HASS is a production screen used to detect and eliminate weak components in a product. It is based on the experience and data gathered from HALT, and the stress levels are tailored to the specific product. The primary goal of HASS is to precipitate (fail) weak components, ensuring that only reliable products are released to the market.\n\nIn summary, HALT focuses on identifying and addressing design weaknesses during the development phase, while HASS is a quality control measure used in production to screen out weak components and ensure product reliability.",
+    "greedy_tokens": [
+      32814,
+      51,
+      320,
+      12243,
+      398,
+      48005,
+      660,
+      9601,
+      27866,
+      8,
+      323,
+      473,
+      5045,
+      320,
+      12243,
+      398,
+      48005,
+      660,
+      51568,
+      70189,
+      8,
+      527,
+      1403,
+      12742,
+      81898,
+      1511,
+      304,
+      2027,
+      4500,
+      323,
+      5788,
+      13,
+      578,
+      6156,
+      6811,
+      1990,
+      21174,
+      51,
+      323,
+      473,
+      5045,
+      15812,
+      304,
+      872,
+      26470,
+      323,
+      3851,
+      35530,
+      382,
+      32814,
+      51,
+      374,
+      264,
+      8631,
+      7649,
+      38152,
+      20011,
+      2391,
+      279,
+      15009,
+      4500,
+      10474,
+      315,
+      264,
+      2027,
+      311,
+      6288,
+      10765,
+      323,
+      22472,
+      2955,
+      44667,
+      13,
+      1102,
+      18065,
+      3917,
+      287,
+      279,
+      2027,
+      311,
+      5370,
+      59623,
+      311,
+      16805,
+      4754,
+      2955,
+      41859,
+      11,
+      902,
+      1253,
+      539,
+      387,
+      10186,
+      304,
+      4725,
+      10565,
+      22484,
+      382,
+      644,
+      13168,
+      11,
+      473,
+      5045,
+      374,
+      264,
+      5788,
+      4264,
+      1511,
+      311,
+      11388,
+      323,
+      22472,
+      7621,
+      6956,
+      304,
+      264,
+      2027,
+      13,
+      1102,
+      374,
+      3196,
+      389,
+      279,
+      3217,
+      323,
+      828,
+      20802,
+      505,
+      21174,
+      51,
+      11,
+      323,
+      279,
+      8631,
+      5990,
+      527,
+      41891,
+      311,
+      279,
+      3230,
+      2027,
+      13,
+      578,
+      6156,
+      5915,
+      315,
+      473,
+      5045,
+      374,
+      311,
+      36841,
+      20227,
+      320,
+      18910,
+      8,
+      7621,
+      6956,
+      11,
+      23391,
+      430,
+      1193,
+      15062,
+      3956,
+      527,
+      6004,
+      311,
+      279,
+      3157,
+      382,
+      644,
+      12399,
+      11,
+      21174,
+      51,
+      24400,
+      389,
+      25607,
+      323,
+      28118,
+      2955,
+      44667,
+      2391,
+      279,
+      4500,
+      10474,
+      11,
+      1418,
+      473,
+      5045,
+      374,
+      264,
+      4367,
+      2585,
+      6767,
+      1511,
+      304,
+      5788,
+      311,
+      4264,
+      704,
+      7621,
+      6956,
+      323,
+      6106,
+      2027,
+      31638,
+      13,
+      128009
+    ],
+    "claims": [
+      {
+        "claim_text": "HALT is a stress testing methodology.",
+        "decoded_claim": "HALT is a stress testing methodology",
+        "sentence": "HALT is a stress testing methodology employed during the engineering development phase of a product to quickly identify and eliminate design weaknesses.",
+        "aligned_token_ids": [
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          55
+        ]
+      },
+      {
+        "claim_text": "HALT is employed during the engineering development phase of a product.",
+        "decoded_claim": "HALT is employed during the engineering development phase of a product",
+        "sentence": "HALT is a stress testing methodology employed during the engineering development phase of a product to quickly identify and eliminate design weaknesses.",
+        "aligned_token_ids": [
+          49,
+          50,
+          51,
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64
+        ]
+      },
+      {
+        "claim_text": "HALT is used to quickly identify design weaknesses.",
+        "decoded_claim": "HALT to quickly identify design weaknesses",
+        "sentence": "HALT is a stress testing methodology employed during the engineering development phase of a product to quickly identify and eliminate design weaknesses.",
+        "aligned_token_ids": [
+          49,
+          50,
+          65,
+          66,
+          67,
+          70,
+          71
+        ]
+      },
+      {
+        "claim_text": "HALT is used to eliminate design weaknesses.",
+        "decoded_claim": "HALT eliminate design weaknesses",
+        "sentence": "HALT is a stress testing methodology employed during the engineering development phase of a product to quickly identify and eliminate design weaknesses.",
+        "aligned_token_ids": [
+          49,
+          50,
+          69,
+          70,
+          71
+        ]
+      },
+      {
+        "claim_text": "HALT reveals potential design flaws.",
+        "decoded_claim": "HALT identify design weaknesses",
+        "sentence": "HALT is a stress testing methodology employed during the engineering development phase of a product to quickly identify and eliminate design weaknesses.",
+        "aligned_token_ids": [
+          49,
+          50,
+          67,
+          70,
+          71
+        ]
+      },
+      {
+        "claim_text": "HALT involves subjecting the product to various stresses.",
+        "decoded_claim": " involves subjecting the product to various stresses",
+        "sentence": "It involves subjecting the product to various stresses to reveal potential design flaws, which may not be apparent in normal operating environments.",
+        "aligned_token_ids": [
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81
+        ]
+      },
+      {
+        "claim_text": "HALT is employed to reveal potential design flaws not apparent in normal operating environments.",
+        "decoded_claim": " reveal potential design flaws not apparent normal operating environments",
+        "sentence": "It involves subjecting the product to various stresses to reveal potential design flaws, which may not be apparent in normal operating environments.",
+        "aligned_token_ids": [
+          83,
+          84,
+          85,
+          86,
+          90,
+          92,
+          94,
+          95,
+          96
+        ]
+      },
+      {
+        "claim_text": "HASS is a production screen.",
+        "decoded_claim": " HASS used in production to screen",
+        "sentence": "In summary, HALT focuses on identifying and addressing design weaknesses during the development phase, while HASS is a quality control measure used in production to screen out weak components and ensure product reliability.",
+        "aligned_token_ids": [
+          187,
+          188,
+          194,
+          195,
+          196,
+          197,
+          198
+        ]
+      },
+      {
+        "claim_text": "HALT focuses on identifying design weaknesses during the development phase.",
+        "decoded_claim": " HALT focuses identifying design weaknesses development phase",
+        "sentence": "In summary, HALT focuses on identifying and addressing design weaknesses during the development phase, while HASS is a quality control measure used in production to screen out weak components and ensure product reliability.",
+        "aligned_token_ids": [
+          172,
+          173,
+          174,
+          176,
+          179,
+          180,
+          183,
+          184
+        ]
+      },
+      {
+        "claim_text": "HALT focuses on addressing design weaknesses during the development phase.",
+        "decoded_claim": " HALT focuses addressing design weaknesses development phase",
+        "sentence": "In summary, HALT focuses on identifying and addressing design weaknesses during the development phase, while HASS is a quality control measure used in production to screen out weak components and ensure product reliability.",
+        "aligned_token_ids": [
+          172,
+          173,
+          174,
+          178,
+          179,
+          180,
+          183,
+          184
+        ]
+      },
+      {
+        "claim_text": "HASS is a quality control measure used in production.",
+        "decoded_claim": " HASS is a quality control measure used in production",
+        "sentence": "In summary, HALT focuses on identifying and addressing design weaknesses during the development phase, while HASS is a quality control measure used in production to screen out weak components and ensure product reliability.",
+        "aligned_token_ids": [
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196
+        ]
+      },
+      {
+        "claim_text": "HASS screens out weak components.",
+        "decoded_claim": " HASS is a quality control measure used in production to screen out weak components",
+        "sentence": "In summary, HALT focuses on identifying and addressing design weaknesses during the development phase, while HASS is a quality control measure used in production to screen out weak components and ensure product reliability.",
+        "aligned_token_ids": [
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200,
+          201
+        ]
+      },
+      {
+        "claim_text": "HASS is used to detect weak components in a product.",
+        "decoded_claim": " HASS used to detect weak components in a product",
+        "sentence": "In contrast, HASS is a production screen used to detect and eliminate weak components in a product.",
+        "aligned_token_ids": [
+          101,
+          102,
+          107,
+          108,
+          109,
+          112,
+          113,
+          114,
+          115,
+          116
+        ]
+      },
+      {
+        "claim_text": "HASS is used to eliminate weak components in a product.",
+        "decoded_claim": " HASS used to eliminate weak components in a product",
+        "sentence": "In contrast, HASS is a production screen used to detect and eliminate weak components in a product.",
+        "aligned_token_ids": [
+          101,
+          102,
+          107,
+          108,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116
+        ]
+      },
+      {
+        "claim_text": "HASS is based on the experience from HALT.",
+        "decoded_claim": " is based on the experience from HALT",
+        "sentence": "It is based on the experience and data gathered from HALT, and the stress levels are tailored to the specific product.",
+        "aligned_token_ids": [
+          119,
+          120,
+          121,
+          122,
+          123,
+          127,
+          128,
+          129
+        ]
+      },
+      {
+        "claim_text": "HASS is based on the data gathered from HALT.",
+        "decoded_claim": " based data gathered from HALT",
+        "sentence": "It is based on the experience and data gathered from HALT, and the stress levels are tailored to the specific product.",
+        "aligned_token_ids": [
+          120,
+          125,
+          126,
+          127,
+          128,
+          129
+        ]
+      },
+      {
+        "claim_text": "HASS stress levels are tailored to the specific product.",
+        "decoded_claim": " stress levels are tailored to the specific product",
+        "sentence": "It is based on the experience and data gathered from HALT, and the stress levels are tailored to the specific product.",
+        "aligned_token_ids": [
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140
+        ]
+      },
+      {
+        "claim_text": "The primary goal of HASS is to precipitate weak components.",
+        "decoded_claim": " primary goal of HASS is to precipitate weak components",
+        "sentence": "The primary goal of HASS is to precipitate (fail) weak components, ensuring that only reliable products are released to the market.",
+        "aligned_token_ids": [
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          150,
+          151,
+          155,
+          156
+        ]
+      },
+      {
+        "claim_text": "HASS ensures that only reliable products are released to the market.",
+        "decoded_claim": " HASS ensuring that only reliable products are released to the market",
+        "sentence": "The primary goal of HASS is to precipitate (fail) weak components, ensuring that only reliable products are released to the market.",
+        "aligned_token_ids": [
+          146,
+          147,
+          158,
+          159,
+          160,
+          161,
+          162,
+          163,
+          164,
+          165,
+          166,
+          167
+        ]
+      },
+      {
+        "claim_text": "HASS ensures product reliability.",
+        "decoded_claim": " HASS ensuring reliable products",
+        "sentence": "The primary goal of HASS is to precipitate (fail) weak components, ensuring that only reliable products are released to the market.",
+        "aligned_token_ids": [
+          146,
+          147,
+          158,
+          161,
+          162
+        ]
+      },
+      {
+        "claim_text": "HALT and HASS are distinct methodologies used in product development and production.",
+        "decoded_claim": "HALT and HASS are two distinct methodologies used in product development and production",
+        "sentence": "HALT (Highly Accelerated Life Testing) and HASS (Highly Accelerated Stress Screening) are two distinct methodologies used in product development and production.",
+        "aligned_token_ids": [
+          0,
+          1,
+          10,
+          11,
+          12,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30
+        ]
+      },
+      {
+        "claim_text": "The primary difference between HALT and HASS lies in their objectives.",
+        "decoded_claim": " primary difference between HALT and HASS lies in their objectives",
+        "sentence": "The primary difference between HALT and HASS lies in their objectives and application phases.",
+        "aligned_token_ids": [
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          44
+        ]
+      },
+      {
+        "claim_text": "The primary difference between HALT and HASS lies in their application phases.",
+        "decoded_claim": " primary difference between HALT and HASS lies in their application phases",
+        "sentence": "The primary difference between HALT and HASS lies in their objectives and application phases.",
+        "aligned_token_ids": [
+          33,
+          34,
+          35,
+          36,
+          37,
+          38,
+          39,
+          40,
+          41,
+          42,
+          43,
+          46,
+          47
+        ]
+      }
+    ]
+  },
+  "13": {
+    "question": "How does RAM work and why is it important?",
+    "retrieval": "passage 1:amounts of RAM (mostly SRAM) are also integrated in the CPU and other ICs on the motherboard, as well as in hard-drives, CD-ROMs, and several other parts of the computer system. In addition to serving as temporary storage and working space for the operating system and applications, RAM is used in numerous other ways. Most modern operating systems employ a method of extending RAM capacity, known as \"virtual memory\". A portion of the computer's hard drive is set aside for a \"paging file\" or a \"scratch partition\", and the combination of physical RAM and the paging file form the system's\\n\\npassage 2:must be refreshed periodically. Because of this refresh process, DRAM uses more power, but it can achieve greater storage densities and lower unit costs compared to SRAM. To be useful, memory cells must be readable and writeable. Within the RAM device, multiplexing and demultiplexing circuitry is used to select memory cells. Typically, a RAM device has a set of address lines A0... An, and for each combination of bits that may be applied to these lines, a set of memory cells are activated. Due to this addressing, RAM devices virtually always have a memory capacity that is a power of\\n\\npassage 3:will always find it easiest to grasp the physical configuration. Much of the confusion surrounding memory geometry occurs when the physical configuration obfuscates the logical configuration. The first defining feature of RAM is form factor. RAM modules can be in compact SO-DIMM form for space constrained applications like laptops, printers, embedded computers, and small form factor computers, and in DIMM format, which is used in most desktops. The other physical characteristics, determined by physical examination, are the number of memory chips, and whether both sides of the memory \"stick\" are populated. Modules with the number of RAM chips equal to",
+    "input": "\nUsing the provided context, answer the question related to the information in the context. Do not acknoledge or mention the existence of the context in your answer. The answer should be a self-contained unambiguous detailed explanation that can be understood without referring back to the context or the question.\n\n======================\n\nExample: \n\nContext: Female domestic cats can have kittens from spring to late autumn in temperate zones and throughout the year in equatorial regions, with litter sizes often ranging from two to five kittens. Domestic cats are bred and shown at cat fancy events as registered pedigreed cats. Population control includes spaying and neutering, but pet abandonment has exploded the global feral cat population, which has driven the extinction of bird, mammal, and reptile species.\n\nQuestion: What is the typical litter size for domestic cats?\n\nBad answer: Two to five kittens. (This answer refers back to the context and is not self-contained.)\nBad answer: The context states that domestic cats have litters of two to five kittens. (This answer acknowledges the context and is not self-contained.)\nBad answer: The typical litter size for these cats often ranges from two to five kittens. (This answer uses \"these cats\" which is ambiguous without context.)\n\nGood answer: The typical litter size for domestic cats often ranges from two to five kittens.\n\n======================\n\nNow, answer the following:\n\nContext: passage 1:amounts of RAM (mostly SRAM) are also integrated in the CPU and other ICs on the motherboard, as well as in hard-drives, CD-ROMs, and several other parts of the computer system. In addition to serving as temporary storage and working space for the operating system and applications, RAM is used in numerous other ways. Most modern operating systems employ a method of extending RAM capacity, known as \"virtual memory\". A portion of the computer's hard drive is set aside for a \"paging file\" or a \"scratch partition\", and the combination of physical RAM and the paging file form the system's\\n\\npassage 2:must be refreshed periodically. Because of this refresh process, DRAM uses more power, but it can achieve greater storage densities and lower unit costs compared to SRAM. To be useful, memory cells must be readable and writeable. Within the RAM device, multiplexing and demultiplexing circuitry is used to select memory cells. Typically, a RAM device has a set of address lines A0... An, and for each combination of bits that may be applied to these lines, a set of memory cells are activated. Due to this addressing, RAM devices virtually always have a memory capacity that is a power of\\n\\npassage 3:will always find it easiest to grasp the physical configuration. Much of the confusion surrounding memory geometry occurs when the physical configuration obfuscates the logical configuration. The first defining feature of RAM is form factor. RAM modules can be in compact SO-DIMM form for space constrained applications like laptops, printers, embedded computers, and small form factor computers, and in DIMM format, which is used in most desktops. The other physical characteristics, determined by physical examination, are the number of memory chips, and whether both sides of the memory \"stick\" are populated. Modules with the number of RAM chips equal to\n\nQuestion: How does RAM work and why is it important?\n\nAnswer:\n",
+    "output": "RAM, or Random Access Memory, is a type of computer memory that serves as temporary storage and working space for the operating system and applications. It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data. The memory cells are organized in a specific configuration, with each combination of bits applied to the address lines activating a set of memory cells.\n\nRAM is important because it allows the computer to access and process data quickly and efficiently. It acts as a buffer between the computer's hard drive and the central processing unit (CPU), providing a fast and temporary storage space for data that the CPU needs to access. This enables the computer to perform tasks and run applications quickly and smoothly.\n\nIn addition to its role in temporary storage, RAM is also used to extend the computer's memory capacity through a method known as \"virtual memory.\" This involves setting aside a portion of the hard drive as a \"paging file\" or \"scratch partition,\" which can be used to supplement the physical RAM when needed.\n\nOverall, RAM plays a critical role in the functioning of a computer, enabling it to access and process data quickly and efficiently, and allowing it to run applications and perform tasks smoothly.",
+    "greedy_tokens": [
+      35005,
+      11,
+      477,
+      10836,
+      9742,
+      14171,
+      11,
+      374,
+      264,
+      955,
+      315,
+      6500,
+      5044,
+      430,
+      17482,
+      439,
+      13643,
+      5942,
+      323,
+      3318,
+      3634,
+      369,
+      279,
+      10565,
+      1887,
+      323,
+      8522,
+      13,
+      1102,
+      4375,
+      555,
+      1701,
+      264,
+      10824,
+      315,
+      7106,
+      6956,
+      11,
+      2737,
+      5044,
+      7917,
+      11,
+      12842,
+      2635,
+      287,
+      323,
+      2486,
+      10046,
+      2635,
+      287,
+      16622,
+      894,
+      11,
+      323,
+      2686,
+      5238,
+      11,
+      311,
+      3637,
+      323,
+      17622,
+      828,
+      13,
+      578,
+      5044,
+      7917,
+      527,
+      17057,
+      304,
+      264,
+      3230,
+      6683,
+      11,
+      449,
+      1855,
+      10824,
+      315,
+      9660,
+      9435,
+      311,
+      279,
+      2686,
+      5238,
+      72192,
+      264,
+      743,
+      315,
+      5044,
+      7917,
+      382,
+      35005,
+      374,
+      3062,
+      1606,
+      433,
+      6276,
+      279,
+      6500,
+      311,
+      2680,
+      323,
+      1920,
+      828,
+      6288,
+      323,
+      30820,
+      13,
+      1102,
+      14385,
+      439,
+      264,
+      4240,
+      1990,
+      279,
+      6500,
+      596,
+      2653,
+      6678,
+      323,
+      279,
+      8792,
+      8863,
+      5089,
+      320,
+      32715,
+      705,
+      8405,
+      264,
+      5043,
+      323,
+      13643,
+      5942,
+      3634,
+      369,
+      828,
+      430,
+      279,
+      14266,
+      3966,
+      311,
+      2680,
+      13,
+      1115,
+      20682,
+      279,
+      6500,
+      311,
+      2804,
+      9256,
+      323,
+      1629,
+      8522,
+      6288,
+      323,
+      39511,
+      382,
+      644,
+      5369,
+      311,
+      1202,
+      3560,
+      304,
+      13643,
+      5942,
+      11,
+      22813,
+      374,
+      1101,
+      1511,
+      311,
+      13334,
+      279,
+      6500,
+      596,
+      5044,
+      8824,
+      1555,
+      264,
+      1749,
+      3967,
+      439,
+      330,
+      26752,
+      5044,
+      1210,
+      1115,
+      18065,
+      6376,
+      16038,
+      264,
+      13651,
+      315,
+      279,
+      2653,
+      6678,
+      439,
+      264,
+      330,
+      73846,
+      1052,
+      1,
+      477,
+      330,
+      55155,
+      17071,
+      1359,
+      902,
+      649,
+      387,
+      1511,
+      311,
+      22822,
+      279,
+      7106,
+      22813,
+      994,
+      4460,
+      382,
+      28589,
+      11,
+      22813,
+      11335,
+      264,
+      9200,
+      3560,
+      304,
+      279,
+      31301,
+      315,
+      264,
+      6500,
+      11,
+      28462,
+      433,
+      311,
+      2680,
+      323,
+      1920,
+      828,
+      6288,
+      323,
+      30820,
+      11,
+      323,
+      10923,
+      433,
+      311,
+      1629,
+      8522,
+      323,
+      2804,
+      9256,
+      39511,
+      13,
+      128009
+    ],
+    "claims": [
+      {
+        "claim_text": "RAM stands for Random Access Memory.",
+        "decoded_claim": "RAM Random Access Memory",
+        "sentence": "RAM, or Random Access Memory, is a type of computer memory that serves as temporary storage and working space for the operating system and applications.",
+        "aligned_token_ids": [
+          0,
+          3,
+          4,
+          5
+        ]
+      },
+      {
+        "claim_text": "RAM is a type of computer memory.",
+        "decoded_claim": "RAM Random Access Memory is a type of computer memory",
+        "sentence": "RAM, or Random Access Memory, is a type of computer memory that serves as temporary storage and working space for the operating system and applications.",
+        "aligned_token_ids": [
+          0,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      },
+      {
+        "claim_text": "RAM serves as temporary storage for the operating system.",
+        "decoded_claim": "RAM serves as temporary storage for the operating system",
+        "sentence": "RAM, or Random Access Memory, is a type of computer memory that serves as temporary storage and working space for the operating system and applications.",
+        "aligned_token_ids": [
+          0,
+          14,
+          15,
+          16,
+          17,
+          21,
+          22,
+          23,
+          24
+        ]
+      },
+      {
+        "claim_text": "RAM serves as temporary storage for applications.",
+        "decoded_claim": "RAM serves as temporary storage applications",
+        "sentence": "RAM, or Random Access Memory, is a type of computer memory that serves as temporary storage and working space for the operating system and applications.",
+        "aligned_token_ids": [
+          0,
+          14,
+          15,
+          16,
+          17,
+          26
+        ]
+      },
+      {
+        "claim_text": "RAM uses physical components to store data.",
+        "decoded_claim": " using combination of physical components memory cells circuitry address lines store data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          31,
+          33,
+          34,
+          35,
+          36,
+          39,
+          40,
+          50,
+          51,
+          54,
+          55,
+          58,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM uses demultiplexing circuitry to store data.",
+        "decoded_claim": " works using combination physical components memory cells multiplexing demultiplexing circuitry store data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          29,
+          31,
+          33,
+          35,
+          36,
+          39,
+          40,
+          42,
+          43,
+          44,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          58,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM uses address lines to store data.",
+        "decoded_claim": " address lines to store data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          54,
+          55,
+          57,
+          58,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM works by using a combination of physical components to retrieve data.",
+        "decoded_claim": " works by using a combination of physical components to retrieve data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          57,
+          60,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM works by using memory cells to retrieve data.",
+        "decoded_claim": " works using memory cells retrieve data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          29,
+          31,
+          39,
+          40,
+          60,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM works by using multiplexing circuitry to retrieve data.",
+        "decoded_claim": " works using multiplexing circuitry retrieve data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          29,
+          31,
+          42,
+          43,
+          44,
+          50,
+          51,
+          60,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM works by using demultiplexing circuitry to retrieve data.",
+        "decoded_claim": " works using demultiplexing circuitry retrieve data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          29,
+          31,
+          46,
+          47,
+          48,
+          49,
+          50,
+          51,
+          60,
+          61
+        ]
+      },
+      {
+        "claim_text": "RAM works by using address lines to retrieve data.",
+        "decoded_claim": " works using address lines retrieve data",
+        "sentence": "It works by using a combination of physical components, including memory cells, multiplexing and demultiplexing circuitry, and address lines, to store and retrieve data.",
+        "aligned_token_ids": [
+          29,
+          31,
+          54,
+          55,
+          60,
+          61
+        ]
+      },
+      {
+        "claim_text": "Memory cells in RAM are organized in a specific configuration.",
+        "decoded_claim": " memory cells are organized in a specific configuration",
+        "sentence": "The memory cells are organized in a specific configuration, with each combination of bits applied to the address lines activating a set of memory cells.",
+        "aligned_token_ids": [
+          64,
+          65,
+          66,
+          67,
+          68,
+          69,
+          70,
+          71
+        ]
+      },
+      {
+        "claim_text": "Each combination of bits applied to address lines activates a set of memory cells in RAM.",
+        "decoded_claim": " each combination of bits applied to the address lines activating a set of memory cells",
+        "sentence": "The memory cells are organized in a specific configuration, with each combination of bits applied to the address lines activating a set of memory cells.",
+        "aligned_token_ids": [
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81,
+          82,
+          83,
+          84,
+          85,
+          86,
+          87,
+          88
+        ]
+      },
+      {
+        "claim_text": "RAM allows the computer to access data quickly.",
+        "decoded_claim": "RAM allows the computer to access data quickly",
+        "sentence": "RAM is important because it allows the computer to access and process data quickly and efficiently.",
+        "aligned_token_ids": [
+          90,
+          95,
+          96,
+          97,
+          98,
+          99,
+          102,
+          103
+        ]
+      },
+      {
+        "claim_text": "RAM allows the computer to process data quickly.",
+        "decoded_claim": "RAM allows the computer to access and process data quickly",
+        "sentence": "RAM is important because it allows the computer to access and process data quickly and efficiently.",
+        "aligned_token_ids": [
+          90,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103
+        ]
+      },
+      {
+        "claim_text": "RAM enables the computer to run applications smoothly.",
+        "decoded_claim": "RAM allows the computer to access and process data quickly and efficiently",
+        "sentence": "RAM is important because it allows the computer to access and process data quickly and efficiently.",
+        "aligned_token_ids": [
+          90,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105
+        ]
+      },
+      {
+        "claim_text": "RAM enables a computer to access data efficiently.",
+        "decoded_claim": "RAM allows the computer to access and process data efficiently",
+        "sentence": "RAM is important because it allows the computer to access and process data quickly and efficiently.",
+        "aligned_token_ids": [
+          90,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          105
+        ]
+      },
+      {
+        "claim_text": "RAM enables a computer to process data efficiently.",
+        "decoded_claim": "RAM allows the computer to access and process data quickly and efficiently",
+        "sentence": "RAM is important because it allows the computer to access and process data quickly and efficiently.",
+        "aligned_token_ids": [
+          90,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105
+        ]
+      },
+      {
+        "claim_text": "RAM allows a computer to perform tasks smoothly.",
+        "decoded_claim": "RAM allows the computer to access and process data quickly and efficiently",
+        "sentence": "RAM is important because it allows the computer to access and process data quickly and efficiently.",
+        "aligned_token_ids": [
+          90,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105
+        ]
+      },
+      {
+        "claim_text": "RAM acts as a buffer between the hard drive and the CPU.",
+        "decoded_claim": " acts as a buffer between the computer's hard drive and the central processing unit (CPU),",
+        "sentence": "It acts as a buffer between the computer's hard drive and the central processing unit (CPU), providing a fast and temporary storage space for data that the CPU needs to access.",
+        "aligned_token_ids": [
+          108,
+          109,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118,
+          119,
+          120,
+          121,
+          122,
+          123,
+          124,
+          125
+        ]
+      },
+      {
+        "claim_text": "RAM provides fast storage space for data the CPU needs to access.",
+        "decoded_claim": " buffer central processing unitCPU providing a fast and temporary storage space for data that the CPU needs to access",
+        "sentence": "It acts as a buffer between the computer's hard drive and the central processing unit (CPU), providing a fast and temporary storage space for data that the CPU needs to access.",
+        "aligned_token_ids": [
+          111,
+          120,
+          121,
+          122,
+          124,
+          126,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140
+        ]
+      },
+      {
+        "claim_text": "RAM provides temporary storage space for data the CPU needs to access.",
+        "decoded_claim": " temporary storage space for data that the CPU needs to access",
+        "sentence": "It acts as a buffer between the computer's hard drive and the central processing unit (CPU), providing a fast and temporary storage space for data that the CPU needs to access.",
+        "aligned_token_ids": [
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137,
+          138,
+          139,
+          140
+        ]
+      },
+      {
+        "claim_text": "RAM enables the computer to perform tasks quickly.",
+        "decoded_claim": " RAM enabling it to access and process data quickly perform tasks",
+        "sentence": "Overall, RAM plays a critical role in the functioning of a computer, enabling it to access and process data quickly and efficiently, and allowing it to run applications and perform tasks smoothly.",
+        "aligned_token_ids": [
+          220,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          250,
+          251
+        ]
+      },
+      {
+        "claim_text": "RAM plays a critical role in the functioning of a computer.",
+        "decoded_claim": " RAM plays a critical role functioning of a computer",
+        "sentence": "Overall, RAM plays a critical role in the functioning of a computer, enabling it to access and process data quickly and efficiently, and allowing it to run applications and perform tasks smoothly.",
+        "aligned_token_ids": [
+          220,
+          221,
+          222,
+          223,
+          224,
+          227,
+          228,
+          229,
+          230
+        ]
+      },
+      {
+        "claim_text": "RAM enables the computer to run applications quickly.",
+        "decoded_claim": " RAM enabling it to access and process data quickly allowing it to run applications",
+        "sentence": "Overall, RAM plays a critical role in the functioning of a computer, enabling it to access and process data quickly and efficiently, and allowing it to run applications and perform tasks smoothly.",
+        "aligned_token_ids": [
+          220,
+          232,
+          233,
+          234,
+          235,
+          236,
+          237,
+          238,
+          239,
+          244,
+          245,
+          246,
+          247,
+          248
+        ]
+      },
+      {
+        "claim_text": "RAM is used to extend the computer's memory capacity.",
+        "decoded_claim": " RAM used extend computer's memory capacity",
+        "sentence": "In addition to its role in temporary storage, RAM is also used to extend the computer's memory capacity through a method known as \"virtual memory.\"",
+        "aligned_token_ids": [
+          165,
+          168,
+          170,
+          172,
+          173,
+          174,
+          175
+        ]
+      },
+      {
+        "claim_text": "RAM extends memory capacity through virtual memory.",
+        "decoded_claim": " RAM used to extend the computer's memory capacity through a method known as \"virtual memory.\"",
+        "sentence": "In addition to its role in temporary storage, RAM is also used to extend the computer's memory capacity through a method known as \"virtual memory.\"",
+        "aligned_token_ids": [
+          165,
+          168,
+          169,
+          170,
+          171,
+          172,
+          173,
+          174,
+          175,
+          176,
+          177,
+          178,
+          179,
+          180,
+          181,
+          182,
+          183,
+          184
+        ]
+      },
+      {
+        "claim_text": "Virtual memory involves setting aside a portion of the hard drive.",
+        "decoded_claim": " setting aside a portion of the hard drive",
+        "sentence": "This involves setting aside a portion of the hard drive as a \"paging file\" or \"scratch partition,\" which can be used to supplement the physical RAM when needed.",
+        "aligned_token_ids": [
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194
+        ]
+      },
+      {
+        "claim_text": "A paging file is used to supplement physical RAM.",
+        "decoded_claim": " hard drivepaging file supplement physical RAM",
+        "sentence": "This involves setting aside a portion of the hard drive as a \"paging file\" or \"scratch partition,\" which can be used to supplement the physical RAM when needed.",
+        "aligned_token_ids": [
+          193,
+          194,
+          198,
+          199,
+          211,
+          213,
+          214
+        ]
+      },
+      {
+        "claim_text": "A scratch partition is used to supplement physical RAM.",
+        "decoded_claim": "scratch partition supplement physical RAM",
+        "sentence": "This involves setting aside a portion of the hard drive as a \"paging file\" or \"scratch partition,\" which can be used to supplement the physical RAM when needed.",
+        "aligned_token_ids": [
+          203,
+          204,
+          211,
+          213,
+          214
+        ]
+      },
+      {
+        "claim_text": "Virtual memory involves setting aside a portion of the hard drive as a paging file.",
+        "decoded_claim": " setting aside a portion of the hard drive as a \"paging file\"",
+        "sentence": "This involves setting aside a portion of the hard drive as a \"paging file\" or \"scratch partition,\" which can be used to supplement the physical RAM when needed.",
+        "aligned_token_ids": [
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          195,
+          196,
+          197,
+          198,
+          199,
+          200
+        ]
+      },
+      {
+        "claim_text": "Virtual memory involves setting aside a portion of the hard drive as a scratch partition.",
+        "decoded_claim": " setting aside a portion of the hard drivescratch partition",
+        "sentence": "This involves setting aside a portion of the hard drive as a \"paging file\" or \"scratch partition,\" which can be used to supplement the physical RAM when needed.",
+        "aligned_token_ids": [
+          187,
+          188,
+          189,
+          190,
+          191,
+          192,
+          193,
+          194,
+          203,
+          204
+        ]
+      },
+      {
+        "claim_text": "RAM allows a computer to run applications smoothly.",
+        "decoded_claim": " enables the computer to run applications smoothly",
+        "sentence": "This enables the computer to perform tasks and run applications quickly and smoothly.",
+        "aligned_token_ids": [
+          143,
+          144,
+          145,
+          146,
+          150,
+          151,
+          154
+        ]
+      }
+    ]
+  },
+  "14": {
+    "question": "How does nuclear fission generate energy?",
+    "retrieval": "passage 1:the interior of the Earth. Radioactive isotopes of uranium, thorium and potassium are the primary contributors to this decay heat, and this radioactive decay is the primary source of heat from which geothermal energy derives. In a typical nuclear fission reaction, 187 MeV of energy are released instantaneously in the form of kinetic energy from the fission products, kinetic energy from the fission neutrons, instantaneous gamma rays, or gamma rays from the capture of neutrons. An additional 23 MeV of energy are released at some time after fission from the beta decay of fission products. About 10 MeV of the\\n\\npassage 2:the energy of the (longer range) electromagnetic repulsion between the fragments. The result is two fission fragments moving away from each other, at high energy. About 6 MeV of the fission-input energy is supplied by the simple binding of an extra neutron to the heavy nucleus via the strong force; however, in many fissionable isotopes, this amount of energy is not enough for fission. Uranium-238, for example, has a near-zero fission cross section for neutrons of less than one MeV energy. If no additional energy is supplied by any other mechanism, the nucleus will not fission, but will merely absorb\\n\\npassage 3:undergo fission when struck by fission neutrons, and in turn emit neutrons when they break apart. This makes a self-sustaining nuclear chain reaction possible, releasing energy at a controlled rate in a nuclear reactor or at a very rapid, uncontrolled rate in a nuclear weapon. The amount of free energy contained in nuclear fuel is millions of times the amount of free energy contained in a similar mass of chemical fuel such as gasoline, making nuclear fission a very dense source of energy. The products of nuclear fission, however, are on average far more radioactive than the heavy elements which",
+    "input": "\nUsing the provided context, answer the question related to the information in the context. Do not acknoledge or mention the existence of the context in your answer. The answer should be a self-contained unambiguous detailed explanation that can be understood without referring back to the context or the question.\n\n======================\n\nExample: \n\nContext: Female domestic cats can have kittens from spring to late autumn in temperate zones and throughout the year in equatorial regions, with litter sizes often ranging from two to five kittens. Domestic cats are bred and shown at cat fancy events as registered pedigreed cats. Population control includes spaying and neutering, but pet abandonment has exploded the global feral cat population, which has driven the extinction of bird, mammal, and reptile species.\n\nQuestion: What is the typical litter size for domestic cats?\n\nBad answer: Two to five kittens. (This answer refers back to the context and is not self-contained.)\nBad answer: The context states that domestic cats have litters of two to five kittens. (This answer acknowledges the context and is not self-contained.)\nBad answer: The typical litter size for these cats often ranges from two to five kittens. (This answer uses \"these cats\" which is ambiguous without context.)\n\nGood answer: The typical litter size for domestic cats often ranges from two to five kittens.\n\n======================\n\nNow, answer the following:\n\nContext: passage 1:the interior of the Earth. Radioactive isotopes of uranium, thorium and potassium are the primary contributors to this decay heat, and this radioactive decay is the primary source of heat from which geothermal energy derives. In a typical nuclear fission reaction, 187 MeV of energy are released instantaneously in the form of kinetic energy from the fission products, kinetic energy from the fission neutrons, instantaneous gamma rays, or gamma rays from the capture of neutrons. An additional 23 MeV of energy are released at some time after fission from the beta decay of fission products. About 10 MeV of the\\n\\npassage 2:the energy of the (longer range) electromagnetic repulsion between the fragments. The result is two fission fragments moving away from each other, at high energy. About 6 MeV of the fission-input energy is supplied by the simple binding of an extra neutron to the heavy nucleus via the strong force; however, in many fissionable isotopes, this amount of energy is not enough for fission. Uranium-238, for example, has a near-zero fission cross section for neutrons of less than one MeV energy. If no additional energy is supplied by any other mechanism, the nucleus will not fission, but will merely absorb\\n\\npassage 3:undergo fission when struck by fission neutrons, and in turn emit neutrons when they break apart. This makes a self-sustaining nuclear chain reaction possible, releasing energy at a controlled rate in a nuclear reactor or at a very rapid, uncontrolled rate in a nuclear weapon. The amount of free energy contained in nuclear fuel is millions of times the amount of free energy contained in a similar mass of chemical fuel such as gasoline, making nuclear fission a very dense source of energy. The products of nuclear fission, however, are on average far more radioactive than the heavy elements which\n\nQuestion: How does nuclear fission generate energy?\n\nAnswer:\n",
+    "output": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays. This energy release occurs in two stages: an instantaneous release of around 187 MeV of energy, and a subsequent release of around 23 MeV of energy from the beta decay of fission products. The fission process is initiated when a heavy nucleus, such as uranium, absorbs an extra neutron, which provides the necessary energy for the nucleus to split. This energy is then released as the fission fragments move away from each other at high energy, and can be harnessed to generate power in a controlled manner in a nuclear reactor, or released rapidly in a nuclear explosion.",
+    "greedy_tokens": [
+      45,
+      9834,
+      282,
+      7711,
+      27983,
+      4907,
+      1555,
+      264,
+      1920,
+      1405,
+      459,
+      25524,
+      62607,
+      41567,
+      1139,
+      1403,
+      477,
+      810,
+      9333,
+      97192,
+      11,
+      28965,
+      264,
+      5199,
+      3392,
+      315,
+      4907,
+      304,
+      279,
+      1376,
+      315,
+      71423,
+      4907,
+      505,
+      279,
+      282,
+      7711,
+      3956,
+      323,
+      26878,
+      26692,
+      11,
+      439,
+      1664,
+      439,
+      22350,
+      45220,
+      13,
+      1115,
+      4907,
+      4984,
+      13980,
+      304,
+      1403,
+      18094,
+      25,
+      459,
+      96219,
+      4984,
+      315,
+      2212,
+      220,
+      9674,
+      2206,
+      53,
+      315,
+      4907,
+      11,
+      323,
+      264,
+      17876,
+      4984,
+      315,
+      2212,
+      220,
+      1419,
+      2206,
+      53,
+      315,
+      4907,
+      505,
+      279,
+      13746,
+      31815,
+      315,
+      282,
+      7711,
+      3956,
+      13,
+      578,
+      282,
+      7711,
+      1920,
+      374,
+      33230,
+      994,
+      264,
+      8987,
+      62607,
+      11,
+      1778,
+      439,
+      54944,
+      11,
+      91111,
+      459,
+      5066,
+      73404,
+      11,
+      902,
+      5825,
+      279,
+      5995,
+      4907,
+      369,
+      279,
+      62607,
+      311,
+      6859,
+      13,
+      1115,
+      4907,
+      374,
+      1243,
+      6004,
+      439,
+      279,
+      282,
+      7711,
+      35603,
+      3351,
+      3201,
+      505,
+      1855,
+      1023,
+      520,
+      1579,
+      4907,
+      11,
+      323,
+      649,
+      387,
+      305,
+      1923,
+      22456,
+      311,
+      7068,
+      2410,
+      304,
+      264,
+      14400,
+      11827,
+      304,
+      264,
+      11499,
+      38729,
+      11,
+      477,
+      6004,
+      19019,
+      304,
+      264,
+      11499,
+      25176,
+      13,
+      128009
+    ],
+    "claims": [
+      {
+        "claim_text": "Nuclear fission generates energy.",
+        "decoded_claim": "Nuclear fission generates energy releasing a significant amount of energy",
+        "sentence": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission involves an atomic nucleus splitting into two or more smaller nuclei.",
+        "decoded_claim": "Nuclear fission an atomic nucleus splits into two or more smaller nuclei",
+        "sentence": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission releases energy in the form of kinetic energy from fission products.",
+        "decoded_claim": "Nuclear fission releasing a significant amount of energy in the form of kinetic energy from the fission products",
+        "sentence": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26,
+          27,
+          28,
+          29,
+          30,
+          31,
+          32,
+          33,
+          34,
+          35,
+          36,
+          37
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission releases energy in the form of neutrons.",
+        "decoded_claim": "Nuclear fission releasing energy neutrons",
+        "sentence": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          21,
+          26,
+          39,
+          40
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission releases energy in the form of gamma rays.",
+        "decoded_claim": "Nuclear fission releasing energy gamma rays",
+        "sentence": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          21,
+          26,
+          45,
+          46
+        ]
+      },
+      {
+        "claim_text": "Energy from nuclear fission can be released rapidly in a nuclear explosion.",
+        "decoded_claim": "Nuclear fission generates energy releasing a significant amount of energy",
+        "sentence": "Nuclear fission generates energy through a process where an atomic nucleus splits into two or more smaller nuclei, releasing a significant amount of energy in the form of kinetic energy from the fission products and neutrons, as well as gamma rays.",
+        "aligned_token_ids": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission releases around 187 MeV of energy instantaneously.",
+        "decoded_claim": " energy release occurs in two stages an instantaneous release of around187 MeV of energy",
+        "sentence": "This energy release occurs in two stages: an instantaneous release of around 187 MeV of energy, and a subsequent release of around 23 MeV of energy from the beta decay of fission products.",
+        "aligned_token_ids": [
+          49,
+          50,
+          51,
+          52,
+          53,
+          54,
+          56,
+          57,
+          58,
+          59,
+          60,
+          62,
+          63,
+          64,
+          65,
+          66
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission releases around 23 MeV of energy from the beta decay of fission products.",
+        "decoded_claim": " release around23 MeV of energy beta decay fission products",
+        "sentence": "This energy release occurs in two stages: an instantaneous release of around 187 MeV of energy, and a subsequent release of around 23 MeV of energy from the beta decay of fission products.",
+        "aligned_token_ids": [
+          50,
+          60,
+          75,
+          76,
+          77,
+          78,
+          79,
+          82,
+          83,
+          85,
+          86,
+          87
+        ]
+      },
+      {
+        "claim_text": "Nuclear fission is initiated when a heavy nucleus absorbs an extra neutron.",
+        "decoded_claim": " fission is initiated when a heavy nucleus absorbs an extra neutron",
+        "sentence": "The fission process is initiated when a heavy nucleus, such as uranium, absorbs an extra neutron, which provides the necessary energy for the nucleus to split.",
+        "aligned_token_ids": [
+          90,
+          91,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          104,
+          105,
+          106,
+          107
+        ]
+      },
+      {
+        "claim_text": "The absorption of an extra neutron provides the necessary energy for the nucleus to split.",
+        "decoded_claim": " fission process is initiated heavy nucleus absorbs an extra neutron provides the necessary energy for the nucleus to split",
+        "sentence": "The fission process is initiated when a heavy nucleus, such as uranium, absorbs an extra neutron, which provides the necessary energy for the nucleus to split.",
+        "aligned_token_ids": [
+          90,
+          91,
+          92,
+          93,
+          94,
+          97,
+          98,
+          104,
+          105,
+          106,
+          107,
+          110,
+          111,
+          112,
+          113,
+          114,
+          115,
+          116,
+          117,
+          118
+        ]
+      },
+      {
+        "claim_text": "A heavy nucleus such as uranium can initiate nuclear fission by absorbing an extra neutron.",
+        "decoded_claim": " fission is initiated when a heavy nucleus, such as uranium, absorbs an extra neutron",
+        "sentence": "The fission process is initiated when a heavy nucleus, such as uranium, absorbs an extra neutron, which provides the necessary energy for the nucleus to split.",
+        "aligned_token_ids": [
+          90,
+          91,
+          93,
+          94,
+          95,
+          96,
+          97,
+          98,
+          99,
+          100,
+          101,
+          102,
+          103,
+          104,
+          105,
+          106,
+          107
+        ]
+      },
+      {
+        "claim_text": "Energy from nuclear fission is released as fission fragments move away from each other at high energy.",
+        "decoded_claim": " energy is then released fission fragments move away from each other at high energy",
+        "sentence": "This energy is then released as the fission fragments move away from each other at high energy, and can be harnessed to generate power in a controlled manner in a nuclear reactor, or released rapidly in a nuclear explosion.",
+        "aligned_token_ids": [
+          121,
+          122,
+          123,
+          124,
+          127,
+          128,
+          129,
+          130,
+          131,
+          132,
+          133,
+          134,
+          135,
+          136,
+          137
+        ]
+      },
+      {
+        "claim_text": "Energy from nuclear fission can be harnessed to generate power in a nuclear reactor.",
+        "decoded_claim": " energy can be harnessed to generate power in a nuclear reactor",
+        "sentence": "This energy is then released as the fission fragments move away from each other at high energy, and can be harnessed to generate power in a controlled manner in a nuclear reactor, or released rapidly in a nuclear explosion.",
+        "aligned_token_ids": [
+          121,
+          140,
+          141,
+          142,
+          143,
+          144,
+          145,
+          146,
+          147,
+          148,
+          149,
+          154,
+          155
         ]
       }
     ]

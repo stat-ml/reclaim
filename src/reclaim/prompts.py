@@ -149,3 +149,39 @@ Text:
 Claim:
 {claim}
 """
+
+ENRICH_CLAIMS_PROMPT = """
+You are given an original text and a list of claims that may have already been extracted from it.
+Find any additional atomic, standalone claims present in the original text that are not already listed.
+
+### Guidelines for Extracted Claims:
+1. **Atomicity**: Break down each statement into the smallest possible unit of factual information. Avoid grouping multiple facts in one claim. For example:
+   - Instead of: "Photosynthesis in plants converts sunlight, carbon dioxide, and water into glucose and oxygen."
+   - Output: ["Photosynthesis in plants converts sunlight into glucose.", "Photosynthesis in plants converts carbon dioxide into glucose.", "Photosynthesis in plants converts water into glucose.", "Photosynthesis in plants produces oxygen."]
+
+   - Instead of: "The heart pumps blood through the body and regulates oxygen supply to tissues."
+   - Output: ["The heart pumps blood through the body.", "The heart regulates oxygen supply to tissues."]
+
+   - Instead of: "Gravity causes objects to fall to the ground and keeps planets in orbit around the sun."
+   - Output: ["Gravity causes objects to fall to the ground.", "Gravity keeps planets in orbit around the sun."]
+
+2. **Context-Independent**: Each claim must be understandable and verifiable on its own without requiring additional context or references to other claims. Avoid vague claims like "This process is important for life."
+
+3. **Precise and Unambiguous**: Ensure the claims are specific and avoid combining related ideas that can stand independently.
+
+4. **No Formatting**: The response must be a Python list of strings without any extra formatting, code blocks, or labels like "python".
+
+
+### Example:
+If the input is:
+Original Text:
+"Mary is a five-year-old girl living in Moscow. She likes playing piano and doesn't like cookies."
+Existing Claims:
+- "Mary is a five-year-old girl."
+- "Mary likes playing piano."
+Extracted claims should be:
+"Mary lives in Moscow.", "Mary doesn't like cookies."
+
+### Now, extract any additional atomic claims from the following text that are not already listed:
+{doc}
+"""
