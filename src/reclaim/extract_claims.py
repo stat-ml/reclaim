@@ -169,6 +169,29 @@ class ClaimsExtractor:
             if s in claim_list:
                 claim_list.remove(s)
 
+        missed_text = (
+            'Original text:\n' +
+            text +
+            '\n\nExtracted claims:\n' +
+            '\n-'.join(claim_list)
+        )
+        missed_claims = doc2sentences(
+            doc=missed_text,
+            mode="enrich_claims",
+            schema=ClaimModel
+            ).claims
+
+        claimed_text = ' '.join(claim_list + missed_claims)
+
+        claim_list = doc2sentences(
+            doc=claimed_text,
+            mode="claims",
+            schema=ClaimModel
+        ).claims
+        for s in stupid_claims:
+            if s in claim_list:
+                claim_list.remove(s)
+
         print("claim_list:", claim_list)
 
         final_claims: List[Claim] = []

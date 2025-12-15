@@ -6,6 +6,7 @@ from .openai_client import OpenAIChat
 from .prompts import (
     DOC_TO_ATOMIC_CLAIMS_PROMPT,
     DOC_TO_INDEPEDENT_SENTENCES_PROMPT,
+    ENRICH_CLAIMS_PROMPT,
     DOC_TO_SENTENCES_PROMPT,
     SENTENCES_TO_CLAIMS_PROMPT,
 )
@@ -48,6 +49,8 @@ def doc2sentences(
         prompt = SENTENCES_TO_CLAIMS_PROMPT
     elif mode == "atomic_claims":
         prompt = DOC_TO_ATOMIC_CLAIMS_PROMPT
+    elif mode == "enrich_claims":
+        prompt = ENRICH_CLAIMS_PROMPT
     else:
         raise ValueError(f"Unsupported mode: {mode}")
 
