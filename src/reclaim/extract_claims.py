@@ -152,11 +152,6 @@ class ClaimsExtractor:
             List of `Claim` objects with token-level provenance.
         """
         start_time = time.time()
-        stupid_claims = [
-            "Mary is a five-year old girl.",
-            "Mary likes playing piano.",
-            "Mary doesn't like cookies.",
-        ]
         # Guardrail cleanup: drop known garbage claims sometimes returned by the prompt.
 
         sent_list = []
@@ -164,10 +159,6 @@ class ClaimsExtractor:
 
         uniq_sentences: List[str] = []
         claim_list = doc2sentences(doc=text, mode="claims", schema=ClaimModel).claims
-
-        for s in stupid_claims:
-            if s in claim_list:
-                claim_list.remove(s)
 
         print("claim_list:", claim_list)
 
