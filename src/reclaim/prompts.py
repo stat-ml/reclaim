@@ -38,35 +38,131 @@ split("{doc}")
 
 SENTENCES_TO_CLAIMS_PROMPT = """
 Your task is to decompose the text into atomic claims.
-Claims should be a context-independent, fully atomic, representing one fact. Atomic claims are simple, indivisible facts that do not bundle multiple pieces of information together.
+
+Atomic claims must be:
+- Context-independent (understandable/verifiable on their own)
+- Fully atomic (one fact per claim, no bundled facts)
+- Exhaustive (capture all relevant factual content from the text)
+- Entailed by the text (do not add background knowledge or “obvious” facts)
 
 ### Guidelines for Decomposition:
-1. **Atomicity**: Break down each statement into the smallest possible unit of factual information. Avoid grouping multiple facts in one claim. For example:
-   - Instead of: "Photosynthesis in plants converts sunlight, carbon dioxide, and water into glucose and oxygen."
-   - Output: ["Photosynthesis in plants converts sunlight into glucose.", "Photosynthesis in plants converts carbon dioxide into glucose.", "Photosynthesis in plants converts water into glucose.", "Photosynthesis in plants produces oxygen."]
 
-   - Instead of: "The heart pumps blood through the body and regulates oxygen supply to tissues."
-   - Output: ["The heart pumps blood through the body.", "The heart regulates oxygen supply to tissues."]
+1) **Atomicity**
+Break down each statement into the smallest possible unit of factual information. Avoid bundling multiple facts in one claim.
 
-   - Instead of: "Gravity causes objects to fall to the ground and keeps planets in orbit around the sun."
-   - Output: ["Gravity causes objects to fall to the ground.", "Gravity keeps planets in orbit around the sun."]
+Examples:
+- Instead of: "The heart pumps blood through the body and regulates oxygen supply to tissues."
+- Output: ["The heart pumps blood through the body.", "The heart regulates oxygen supply to tissues."]
 
-2. **Context-Independent**: Each claim must be understandable and verifiable on its own without requiring additional context or references to other claims. Avoid vague claims like "This process is important for life."
+- Instead of: "Gravity causes objects to fall to the ground and keeps planets in orbit around the sun."
+- Output: ["Gravity causes objects to fall to the ground.", "Gravity keeps planets in orbit around the sun."]
 
-3. **Precise and Unambiguous**: Ensure the claims are specific and avoid combining related ideas that can stand independently.
+Note: Split conjunctions only when each resulting claim remains meaningful and truth-preserving.  
+For example:
+- "Alice bought apples and oranges." → ["Alice bought apples.", "Alice bought oranges."]
+- "Alice and Bob met." → ["Alice and Bob met."]  (Do not split into nonsense like "Alice met.")
 
-4. **No Formatting**: The response must be a Python list of strings without any extra formatting, code blocks, or labels like "python".
+2) **Exhaustiveness**
+Ensure all relevant facts from the original text are captured in the claims. Do not omit significant information.
+
+3) **Context-Independent**
+Each claim must be understandable and verifiable on its own without requiring additional context.
+- Replace vague references (“this”, “that”, “it”, “they”, “the former”, “the company”, etc.) with the specific entity when it is identifiable from the text.
+- If the text does not provide enough information to resolve a reference, keep the original wording but make the claim as standalone as possible.
+
+Avoid vague claims like: "This process is important for life."
+
+4) **Inter-claim Independence**
+Each claim must stand alone and not depend on other claims for interpretation.
+
+Example:
+- Original: "The evidence for undisclosed ingredients in vials includes the presence of graphene compounds. This evidence was later confirmed in further samples."
+- Incorrect: ["The evidence for undisclosed ingredients in vials includes the presence of graphene compounds.", "This evidence was later confirmed in further samples."]
+- Correct: ["The evidence for undisclosed ingredients in vials includes the presence of graphene compounds.", "Further samples confirmed the presence of graphene compounds in vials."]
+
+5) **Precise and Unambiguous**
+Use specific phrasing and preserve meaning exactly. Do not “improve” the author’s certainty or scope.
+
+Preserve exactly:
+- Quantifiers: all, some, many, few, only, exactly, at least, at most
+- Negation: not, no, none, never
+- Comparatives/superlatives: larger than, highest, most, among, ranked #3
+- Units: kg, %, USD, km², etc.
+- Relationship type: causes vs correlates vs is associated with vs suggests
+
+6) **Attribution vs Truth (reported speech)**
+If the text attributes a claim to a source (e.g., “X said/claimed/reported/suggested…”), produce a claim about the attribution.
+Do NOT automatically convert attributed claims into unqualified facts unless the author clearly asserts them as true.
+
+Examples:
+- "A report claims the outage began in May."
+  → ["A report claims the outage began in May."]  (Do not output "The outage began in May." unless asserted as fact.)
+
+- "The WHO reported that the outbreak began in May."
+  → ["The WHO reported that the outbreak began in May."]
+
+7) **Modality and Uncertainty**
+Preserve modality/uncertainty (may, might, could, likely, allegedly, reportedly, suggests). Do not upgrade uncertain statements into certain ones.
+
+Example:
+- "The drug may reduce symptoms."
+  → ["The drug may reduce symptoms."]
+
+8) **Time Handling**
+Preserve all temporal qualifiers: dates, time ranges, “currently”, “formerly”, “as of”, “later”, “before”, “after”.
+- If a reference time anchor is explicitly provided in the text, you may resolve relative time (“then”, “now”, “today”) into that anchor.
+- If no anchor is provided, do not invent dates. Keep relative time terms.
+
+Example:
+- "In 2020, Alice moved to Paris. She now lives in Berlin."
+  → ["Alice moved to Paris in 2020.", "Alice lives in Berlin now."]
+
+9) **Conditionals and Counterfactuals**
+Keep conditional/counterfactual statements as conditionals. Do not assert the antecedent or consequent as fact.
+
+Examples:
+- "If it rains tomorrow, the game will be canceled."
+  → ["If it rains tomorrow, the game will be canceled."]
+
+- "Had the policy passed, taxes would have fallen."
+  → ["If the policy had passed, taxes would have fallen."]
+
+10) **Negation vs “no evidence”**
+Do not convert “lack of evidence” into a negated world claim.
+
+Example:
+- "There is no evidence that X causes Y."
+  → ["There is no evidence that X causes Y."]  (Not: "X does not cause Y.")
+
+11) **Numbers, ranges, and approximation**
+Preserve numeric qualifiers (about/approximately, between, more than, less than).
+For ranges, you may represent them as separate lower/upper-bound claims if that improves atomicity.
+
+Examples:
+- "Sales were between $2M and $3M."
+  → ["Sales were at least $2M.", "Sales were at most $3M."]
+
+- "About 10% of users churned."
+  → ["About 10% of users churned."]
+
+12) **No added knowledge / no bridging**
+Claims must be entailed by the text. Do not add background facts, common knowledge, or “obvious” implications.
+
+Example:
+- If the text says "Paris has 2.1 million residents", do NOT add "Paris is in France."
+
+13) **Output format**
+Return ONLY a Python list of strings (e.g., ["...", "..."]). No extra formatting, no code blocks, no labels.
 
 ### Example:
-If the input text is:
+Input:
 "Mary is a five-year-old girl. She likes playing piano and doesn't like cookies."
-Extracted claims should be:
-"Mary is a five-year-old girl.", "Mary likes playing piano.", "Mary doesn't like cookies."
+Output:
+["Mary is a five-year-old girl.", "Mary likes playing piano.", "Mary doesn't like cookies."]
 
 ### Now, decompose the following text into atomic claims:
 {doc}
-"""
-
+"""	
 
 DOC_TO_INDEPEDENT_SENTENCES_PROMPT = """
 Your task is to perform sentence segmentation and de-contextualization. 
