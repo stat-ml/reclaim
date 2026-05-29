@@ -19,5 +19,5 @@ with open("Meta-Llama-3.1-70B-Instruct-Turbo.json", "r") as f:
         )
         row.update({"claims": [asdict(claim) for claim in claims]}) 
 
-with open("outputs.json", "w") as f:
+with open("outputs_improved_prompt2.json", "w") as f:
     json.dump(data, f, indent=2)
