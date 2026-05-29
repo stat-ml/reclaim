@@ -1,5 +1,6 @@
 import logging
 import os
+import re
 import time
 from typing import Optional
 
@@ -74,7 +75,7 @@ class OpenAIChat:
         ]
         chat = self._send_request(messages, schema)
         if schema is not None:
-            reply = chat.output[0].content[0].parsed
+            reply = chat.output_parsed
         else:
             reply = chat.choices[0].message.content
             # Ignore boilerplate refusals that would pollute downstream parsing.
@@ -85,6 +86,10 @@ class OpenAIChat:
             if "as an ai language model" in reply.lower():
                 return ""
         return reply
+
+    def _supports_temperature(self) -> bool:
+        # o-series reasoning models and gpt-5+ do not accept the temperature parameter
+        return not bool(re.match(r"^(o\d|gpt-5)", self.openai_model))
 
     def _send_request(self, messages, schema: Optional[BaseModel] = None):
         """
@@ -101,24 +106,25 @@ class OpenAIChat:
         # Simple progressive backoff; escalate exception after exhausting attempts.
         for i in range(len(sleep_time_values)):
             try:
+                client = openai.OpenAI(base_url=self.base_url, timeout=self.timeout)
                 if schema is None:
-                    result = openai.OpenAI(
-                        base_url=self.base_url, timeout=self.timeout
-                    ).chat.completions.create(
+                    kwargs = dict(
                         model=self.openai_model,
                         messages=messages,
-                        temperature=0,
                         max_completion_tokens=self.max_tokens,
                     )
+                    if self._supports_temperature():
+                        kwargs["temperature"] = 0
+                    result = client.chat.completions.create(**kwargs)
                 else:
-                    result = openai.OpenAI(
-                        base_url=self.base_url, timeout=self.timeout
-                    ).responses.parse(
+                    kwargs = dict(
                         model=self.openai_model,
                         input=messages,
-                        temperature=0,
                         text_format=schema,
                     )
+                    if self._supports_temperature():
+                        kwargs["temperature"] = 0
+                    result = client.responses.parse(**kwargs)
                 return result
             except Exception as e:
                 sleep_time = sleep_time_values[i]

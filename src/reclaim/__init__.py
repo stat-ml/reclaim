@@ -23,7 +23,7 @@ __all__ = [
 ]
 
 
-def extract_claims(text: str, model: str = "gpt-4o") -> List[Claim]:
+def extract_claims(text: str, model: str = "gpt-5") -> List[Claim]:
     """
     Extract atomic claims from plain text.
     """

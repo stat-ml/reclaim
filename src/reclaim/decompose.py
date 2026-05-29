@@ -5,6 +5,7 @@ from pydantic import BaseModel
 from .openai_client import OpenAIChat
 from .prompts import (
     DOC_TO_ATOMIC_CLAIMS_PROMPT,
+    DOC_TO_ATOMIC_CLAIMS_SYSTEM_PROMPT,
     DOC_TO_INDEPEDENT_SENTENCES_PROMPT,
     DOC_TO_SENTENCES_PROMPT,
     SENTENCES_TO_CLAIMS_PROMPT,
@@ -14,7 +15,7 @@ from .prompts import (
 def doc2sentences(
     doc: str,
     mode: str = "independent_sentences",
-    model: str = "gpt-4o",
+    model: str = "gpt-5-mini",
     system_role: str = "You are good at decomposing and decontextualizing text.",
     num_retries: int = 5,
     schema: Optional[BaseModel] = None,
@@ -48,6 +49,7 @@ def doc2sentences(
         prompt = SENTENCES_TO_CLAIMS_PROMPT
     elif mode == "atomic_claims":
         prompt = DOC_TO_ATOMIC_CLAIMS_PROMPT
+        system_role = DOC_TO_ATOMIC_CLAIMS_SYSTEM_PROMPT
     else:
         raise ValueError(f"Unsupported mode: {mode}")
 
